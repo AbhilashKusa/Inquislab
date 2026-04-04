@@ -1,170 +1,140 @@
 'use client';
+
 export default function Home() {
   return (
-    <>
-      <header>
-        <div className="logo">InquisLab</div>
+    <div className="coming-soon-page">
+      <header className="cs-header">
+        <div className="cs-logo">InquisLab</div>
       </header>
 
-      <main>
-        <h1>
+      <main className="cs-main">
+        <h1 className="cs-title">
           Building
-          <span>something new.</span>
+          <span className="cs-subtitle">something new.</span>
         </h1>
-        <div className="line"></div>
+        <div className="cs-line"></div>
       </main>
 
-      <footer>
-        <div className="status"><span></span>Coming Soon</div>
-        <a href="mailto:hello@inquislab.com" className="contact">hello@inquislab.com</a>
+      <footer className="cs-footer">
+        <div className="cs-status"><span className="cs-dot"></span>Coming Soon</div>
+        <a href="mailto:hello@inquislab.com" className="cs-contact">hello@inquislab.com</a>
       </footer>
 
-      <style jsx global>{`
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      <style jsx>{`
+        .coming-soon-page {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 3rem;
+          background: #000;
+          color: #fff;
+          overflow: hidden;
         }
 
-        html, body {
-            height: 100%;
+        .cs-header {
+          opacity: 0;
+          animation: csFade 1s ease forwards 0.2s;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #000;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 3rem;
-            overflow: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        .cs-logo {
+          font-size: 1rem;
+          font-weight: 500;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
         }
 
-        header {
-            opacity: 0;
-            animation: fade 1s ease forwards 0.2s;
+        .cs-main {
+          position: relative;
         }
 
-        .logo {
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        .cs-title {
+          font-size: clamp(3rem, 12vw, 10rem);
+          font-weight: 600;
+          letter-spacing: -0.04em;
+          line-height: 0.9;
+          opacity: 0;
+          animation: csSlideUp 1s ease forwards 0.4s;
         }
 
-        main {
-            position: relative;
+        .cs-subtitle {
+          display: block;
+          color: #444;
         }
 
-        h1 {
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 0.9;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 0.4s;
+        .cs-line {
+          position: absolute;
+          left: 0;
+          bottom: -2rem;
+          width: 60px;
+          height: 2px;
+          background: #fff;
+          opacity: 0;
+          animation: csGrow 0.8s ease forwards 1s;
         }
 
-        h1 span {
-            display: block;
-            color: #444;
+        .cs-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          opacity: 0;
+          animation: csFade 1s ease forwards 0.6s;
         }
 
-        .line {
-            position: absolute;
-            left: 0;
-            bottom: -2rem;
-            width: 60px;
-            height: 2px;
-            background: #fff;
-            opacity: 0;
-            animation: grow 0.8s ease forwards 1s;
+        .cs-status {
+          font-size: 0.75rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #666;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
         }
 
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            opacity: 0;
-            animation: fade 1s ease forwards 0.6s;
+        .cs-dot {
+          display: inline-block;
+          width: 6px;
+          height: 6px;
+          background: #22c55e;
+          border-radius: 50%;
+          animation: csBlink 2s ease-in-out infinite;
         }
 
-        .status {
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #666;
+        .cs-contact {
+          font-size: 0.875rem;
+          color: #666 !important;
+          text-decoration: none;
+          transition: color 0.3s ease;
         }
 
-        .status span {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            animation: blink 2s ease-in-out infinite;
+        .cs-contact:hover {
+          color: #fff !important;
         }
 
-        .contact {
-            font-size: 0.875rem;
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        @keyframes csFade {
+          to { opacity: 1; }
         }
 
-        .contact:hover {
-            color: #fff;
+        @keyframes csSlideUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Animations */
-        @keyframes fade {
-            to { opacity: 1; }
+        @keyframes csGrow {
+          from { opacity: 0; width: 0; }
+          to { opacity: 1; width: 60px; }
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes csBlink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
         }
 
-        @keyframes grow {
-            from {
-                opacity: 0;
-                width: 0;
-            }
-            to {
-                opacity: 1;
-                width: 60px;
-            }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Responsive Design */
         @media (max-width: 600px) {
-            body {
-                padding: 2rem;
-            }
-            
-            footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
+          .coming-soon-page { padding: 2rem; }
+          .cs-footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
       `}</style>
-    </>
+    </div>
   );
 }
