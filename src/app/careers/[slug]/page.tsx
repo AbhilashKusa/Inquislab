@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import jobsData from '../../../../data/jobs.json';
+import jobsData from '../../../data/jobs.json';
 import { JobDetailClient } from './JobDetailClient';
 
 // Generate static paths for all jobs

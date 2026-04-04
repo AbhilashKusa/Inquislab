@@ -35,7 +35,7 @@ export function JobDetailClient({ job }: { job: Job }) {
     <>
       <div className="jd-page">
         <div className="jd-breadcrumb">
-          <Link href="/projects/industrial-automation">Industrial Automation</Link>
+          <Link href="/">Industrial Automation</Link>
           <span className="jd-sep">/</span>
           <span className="jd-current">{job.title}</span>
         </div>
@@ -69,8 +69,8 @@ export function JobDetailClient({ job }: { job: Job }) {
           </div>
         ))}
 
-        <Link href="/projects/industrial-automation" className="jd-back-link">
-          ← Back to Project
+        <Link href="/" className="jd-back-link">
+          ← Back to all roles
         </Link>
       </div>
 
@@ -109,6 +109,8 @@ export function JobDetailClient({ job }: { job: Job }) {
           .jd-page { padding: 120px 24px 60px; }
           .jd-meta-bar { flex-direction: column; gap: 8px; }
         }
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
       `}</style>
     </>
   );
