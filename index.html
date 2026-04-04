@@ -1,205 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InquisLab - Building Something New</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="InquisLab is building something new. Stay tuned for our upcoming launch.">
-    <meta name="keywords" content="InquisLab, innovation, technology, coming soon">
-    <meta name="author" content="InquisLab">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="InquisLab - Building Something New">
-    <meta property="og:description" content="InquisLab is building something new. Stay tuned for our upcoming launch.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inquislab.com">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="InquisLab - Building Something New">
-    <meta name="twitter:description" content="InquisLab is building something new. Stay tuned for our upcoming launch.">
-    
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InquisLab — AI Software for Industrial Operations</title>
 
-        html, body {
-            height: 100%;
-        }
+<!-- SEO Meta Tags -->
+<meta name="description" content="InquisLab builds AI software for the industries that build everything else — refineries, chemical plants, distribution centers. We're replacing decades-old industrial software.">
+<meta name="keywords" content="InquisLab, industrial AI, reliability engineering, alarm management, ISA-18.2, digital twin, industrial automation">
+<meta name="author" content="InquisLab">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #000;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 3rem;
-            overflow: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+<!-- Open Graph -->
+<meta property="og:title" content="InquisLab — AI Software for Industrial Operations">
+<meta property="og:description" content="Building AI software for the industries that build everything else.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://inquislab.com">
 
-        header {
-            opacity: 0;
-            animation: fade 1s ease forwards 0.2s;
-        }
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="InquisLab — AI Software for Industrial Operations">
+<meta name="twitter:description" content="Building AI software for the industries that build everything else.">
 
-        .logo {
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a0a;--paper:#f2ede3;--paper-dim:#d4cfc3;--paper-ghost:#8a857b;--rule:#2a2824;--rule-soft:#1c1a17;--accent:#d96c3a;--accent-dim:#8a4322;--serif:'Fraunces',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--serif);font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:99;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.4) 100%)}
+.container{max-width:1180px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
+.narrow{max-width:880px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 
-        main {
-            position: relative;
-        }
+nav{padding:28px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(10,10,10,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
+.nav-inner{display:flex;justify-content:space-between;align-items:baseline;max-width:1180px;margin:0 auto;padding:0 48px}
+.logo{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.02em;font-style:italic;text-decoration:none;color:var(--paper)}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:36px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--paper-ghost)}
+.nav-links a{color:inherit;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a.current{color:var(--accent)}
 
-        h1 {
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 0.9;
-            opacity: 0;
-            animation: slideUp 1s ease forwards 0.4s;
-        }
+/* Hero */
+.hero{padding:180px 0 140px;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg .line{position:absolute;width:1px;background:linear-gradient(to bottom,transparent,var(--rule),transparent);opacity:.3}
+.hero-bg .line:nth-child(1){left:20%;height:100%;animation:drift 8s ease-in-out infinite}
+.hero-bg .line:nth-child(2){left:40%;height:80%;top:10%;animation:drift 10s ease-in-out 2s infinite}
+.hero-bg .line:nth-child(3){left:60%;height:90%;top:5%;animation:drift 9s ease-in-out 4s infinite}
+.hero-bg .line:nth-child(4){left:80%;height:70%;top:15%;animation:drift 11s ease-in-out 1s infinite}
+@keyframes drift{0%,100%{opacity:.15}50%{opacity:.35}}
+.hero-meta{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--paper-ghost);margin-bottom:48px;display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.hero-meta::before{content:'';width:40px;height:1px;background:var(--accent)}
+.hero-meta .dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2.5s ease-in-out infinite;margin-right:8px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,7vw,96px);line-height:1.02;letter-spacing:-.03em;max-width:1000px;margin-bottom:48px;position:relative;z-index:1}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero-lead{font-size:21px;line-height:1.6;color:var(--paper-dim);max-width:700px;font-weight:300;position:relative;z-index:1}
+.hero-lead em{font-style:italic;color:var(--paper)}
+.hero-cta{margin-top:56px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-primary{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink);background:var(--accent);text-decoration:none;padding:18px 32px;border:1px solid var(--accent);transition:all .35s ease}
+.btn-primary:hover{background:transparent;color:var(--accent)}
+.btn-primary .arrow{transition:transform .3s}
+.btn-primary:hover .arrow{transform:translateX(4px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);text-decoration:none;padding:18px 32px;border:1px solid var(--accent-dim);transition:all .35s ease}
+.btn-ghost:hover{border-color:var(--accent);color:var(--paper)}
+.btn-ghost .arrow{transition:transform .3s}
+.btn-ghost:hover .arrow{transform:translateX(4px)}
 
-        h1 span {
-            display: block;
-            color: #444;
-        }
+/* Problem Section */
+.problem{padding:120px 0;border-bottom:1px solid var(--rule)}
+.section-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);margin-bottom:48px;display:flex;align-items:center;gap:16px}
+.section-label::before{content:'';width:40px;height:1px;background:var(--accent)}
+.problem h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.5vw,56px);line-height:1.1;letter-spacing:-.02em;margin-bottom:48px;max-width:900px}
+.problem h2 em{font-style:italic;color:var(--accent)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.problem-card{padding:40px;border:1px solid var(--rule-soft);transition:border-color .4s,transform .4s;position:relative}
+.problem-card:hover{border-color:var(--accent-dim);transform:translateY(-2px)}
+.problem-card .num{font-family:var(--mono);font-size:10px;color:var(--paper-ghost);letter-spacing:.25em;margin-bottom:20px}
+.problem-card h3{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-.01em;margin-bottom:16px;line-height:1.2}
+.problem-card h3 em{font-style:italic;color:var(--accent)}
+.problem-card p{font-size:15px;color:var(--paper-dim);line-height:1.6;font-weight:300}
 
-        .line {
-            position: absolute;
-            left: 0;
-            bottom: -2rem;
-            width: 60px;
-            height: 2px;
-            background: #fff;
-            opacity: 0;
-            animation: grow 0.8s ease forwards 1s;
-        }
+/* Product Section */
+.product{padding:120px 0;border-bottom:1px solid var(--rule)}
+.product-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;margin-top:64px}
+.product-left{}
+.product-left h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-.02em;margin-bottom:32px}
+.product-left h2 em{font-style:italic;color:var(--accent)}
+.product-left p{font-size:18px;color:var(--paper-dim);line-height:1.65;font-weight:300;margin-bottom:24px}
+.product-left p em{font-style:italic;color:var(--paper)}
+.product-right{display:flex;flex-direction:column;gap:2px}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:24px;padding:32px;border:1px solid var(--rule-soft);transition:border-color .4s}
+.feature:hover{border-color:var(--accent-dim)}
+.feature-icon{font-family:var(--mono);font-size:20px;color:var(--accent);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent-dim);border-radius:4px}
+.feature h4{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:8px;letter-spacing:-.01em}
+.feature p{font-size:14px;color:var(--paper-dim);line-height:1.6;font-weight:300}
 
-        footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            opacity: 0;
-            animation: fade 1s ease forwards 0.6s;
-        }
+/* Industries Section */
+.industries{padding:120px 0;border-bottom:1px solid var(--rule)}
+.industry-list{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:64px}
+.industry-item{padding:48px;border:1px solid var(--rule-soft);transition:all .4s;cursor:default}
+.industry-item:hover{border-color:var(--accent-dim)}
+.industry-item .tag{font-family:var(--mono);font-size:10px;color:var(--paper-ghost);letter-spacing:.25em;margin-bottom:16px;text-transform:uppercase}
+.industry-item h3{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.015em;margin-bottom:12px}
+.industry-item h3 em{font-style:italic;color:var(--accent)}
+.industry-item p{font-size:15px;color:var(--paper-dim);line-height:1.6;font-weight:300}
 
-        .status {
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #666;
-        }
+/* Team / CTA */
+.team-cta{padding:120px 0;text-align:center}
+.team-cta .section-label{justify-content:center}
+.team-cta .section-label::before{display:none}
+.team-cta h2{font-family:var(--serif);font-weight:300;font-size:clamp(36px,5vw,64px);line-height:1.1;letter-spacing:-.025em;margin-bottom:32px;max-width:800px;margin-left:auto;margin-right:auto}
+.team-cta h2 em{font-style:italic;color:var(--accent)}
+.team-cta p{font-size:18px;color:var(--paper-dim);line-height:1.6;max-width:600px;margin:0 auto 48px;font-weight:300}
+.team-cta p em{font-style:italic;color:var(--paper)}
 
-        .status span {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            animation: blink 2s ease-in-out infinite;
-        }
+/* Footer */
+footer{border-top:1px solid var(--rule);padding:32px 0;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--paper-ghost)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:0 auto;padding:0 48px}
+.footer-inner a{color:var(--paper-ghost);text-decoration:none;transition:color .3s}
+.footer-inner a:hover{color:var(--paper)}
 
-        .contact {
-            font-size: 0.875rem;
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+/* Animations */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-meta{animation:fadeUp .8s ease .1s both}
+.hero h1{animation:fadeUp .9s ease .25s both}
+.hero-lead{animation:fadeUp .9s ease .45s both}
+.hero-cta{animation:fadeUp .9s ease .6s both}
 
-        .contact:hover {
-            color: #fff;
-        }
-
-        /* Animations */
-        @keyframes fade {
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes grow {
-            from {
-                opacity: 0;
-                width: 0;
-            }
-            to {
-                opacity: 1;
-                width: 60px;
-            }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            body {
-                padding: 2rem;
-            }
-            
-            footer {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-        }
-
-        /* Reduce motion for users who prefer it */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+/* Responsive */
+@media (max-width:900px){
+.container,.narrow{padding:0 24px}
+.nav-inner,.footer-inner{padding:0 24px}
+.hero{padding:100px 0 80px}
+.hero h1{font-size:36px}
+.hero-lead{font-size:17px}
+.hero-cta{flex-direction:column;align-items:flex-start}
+.problem,.product,.industries,.team-cta{padding:60px 0}
+.problem h2,.product-left h2{font-size:32px}
+.problem-grid{grid-template-columns:1fr}
+.product-grid{grid-template-columns:1fr;gap:40px}
+.industry-list{grid-template-columns:1fr}
+.nav-links{gap:20px;font-size:10px}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">InquisLab</div>
-    </header>
 
-    <main>
-        <h1>
-            Building
-            <span>something new.</span>
-        </h1>
-        <div class="line"></div>
-    </main>
+<nav>
+<div class="nav-inner">
+<a href="/" class="logo">Inquis<span>·</span>Lab</a>
+<div class="nav-links">
+<a href="/" class="current">Home</a>
+<a href="/careers">Careers</a>
+<a href="mailto:hello@inquislab.com">Contact</a>
+</div>
+</div>
+</nav>
 
-    <footer>
-        <div class="status"><span></span>Coming Soon</div>
-        <a href="mailto:hello@inquislab.com" class="contact">hello@inquislab.com</a>
-    </footer>
+<section class="hero">
+<div class="hero-bg">
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+</div>
+<div class="container">
+<div class="hero-meta"><span class="dot"></span>Building · Shipping · Live</div>
+<h1>AI software for the <em>industries that build everything else.</em></h1>
+<p class="hero-lead">Refineries, chemical plants, distribution centers, factories — the physical systems the world depends on run on software that's decades old. <em>We're replacing it.</em></p>
+<div class="hero-cta">
+<a href="/careers" class="btn-primary"><span>We're hiring</span><span class="arrow">→</span></a>
+<a href="mailto:hello@inquislab.com" class="btn-ghost"><span>Get in touch</span><span class="arrow">→</span></a>
+</div>
+</div>
+</section>
+
+<section class="problem">
+<div class="container">
+<div class="section-label">The problem</div>
+<h2>Industrial software hasn't changed in <em>twenty years.</em> The plants have.</h2>
+<div class="problem-grid">
+<div class="problem-card reveal">
+<div class="num">01</div>
+<h3>Alarm <em>overload</em></h3>
+<p>Operators drown in thousands of alarms per day. Critical signals get lost in the noise. Standards exist to fix this — but adoption is manual and painful.</p>
+</div>
+<div class="problem-card reveal">
+<div class="num">02</div>
+<h3>Manual <em>rationalization</em></h3>
+<p>Alarm rationalization takes months of spreadsheet work. Every review cycle starts from scratch. The institutional knowledge lives in people's heads, not in systems.</p>
+</div>
+<div class="problem-card reveal">
+<div class="num">03</div>
+<h3>No <em>intelligence</em></h3>
+<p>Legacy DCS and SCADA systems record data but don't think. Pattern recognition, root cause analysis, predictive maintenance — all done manually, if at all.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="product">
+<div class="container">
+<div class="section-label">Our product</div>
+<div class="product-grid">
+<div class="product-left">
+<h2>Reliability <em>Twin</em></h2>
+<p>An AI-powered platform that ingests your alarm data, maps it against ISA-18.2 standards, and generates <em>audit-grade rationalization reports</em> in hours — not months.</p>
+<p>Upload your historian data. Get actionable insights. <em>Ship better alarm management to your entire plant.</em></p>
+</div>
+<div class="product-right">
+<div class="feature reveal">
+<div class="feature-icon">⚡</div>
+<div>
+<h4>Automated Analysis</h4>
+<p>ISA-18.2 compliant analysis of your entire alarm database. Hours, not months.</p>
+</div>
+</div>
+<div class="feature reveal">
+<div class="feature-icon">📊</div>
+<div>
+<h4>Audit-Grade Reports</h4>
+<p>Generate rationalization documentation that passes regulatory review on the first try.</p>
+</div>
+</div>
+<div class="feature reveal">
+<div class="feature-icon">🔍</div>
+<div>
+<h4>Pattern Recognition</h4>
+<p>AI identifies chattering alarms, standing alarms, and alarm floods before they cause incidents.</p>
+</div>
+</div>
+<div class="feature reveal">
+<div class="feature-icon">🏭</div>
+<div>
+<h4>Asset Mapping</h4>
+<p>Automatically maps alarms to your asset hierarchy and identifies gaps in coverage.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="industries">
+<div class="container">
+<div class="section-label">Industries we serve</div>
+<div class="industry-list">
+<div class="industry-item reveal">
+<div class="tag">Oil & Gas</div>
+<h3><em>Refineries</em> & Processing</h3>
+<p>Downstream refineries with thousands of control loops and alarm points. We turn alarm chaos into structured reliability programs.</p>
+</div>
+<div class="industry-item reveal">
+<div class="tag">Chemicals</div>
+<h3>Chemical <em>Plants</em></h3>
+<p>Batch and continuous chemical operations where alarm management directly impacts safety, yield, and regulatory compliance.</p>
+</div>
+<div class="industry-item reveal">
+<div class="tag">Logistics</div>
+<h3>Distribution <em>Centers</em></h3>
+<p>Automated warehouses and fulfillment centers with complex conveyor, sorter, and robotic systems generating thousands of events.</p>
+</div>
+<div class="industry-item reveal">
+<div class="tag">Manufacturing</div>
+<h3>Heavy <em>Manufacturing</em></h3>
+<p>Steel, cement, paper mills — operations where equipment reliability and alarm management determine uptime and profitability.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="team-cta">
+<div class="narrow">
+<div class="section-label">Join us</div>
+<h2>Four people. <em>Two teams.</em> Building from zero.</h2>
+<p>We're hiring engineers and marketers who want to build something that matters — not another SaaS dashboard. <em>The people here at the start will run the teams later.</em></p>
+<a href="/careers" class="btn-primary"><span>View open roles</span><span class="arrow">→</span></a>
+</div>
+</section>
+
+<footer>
+<div class="footer-inner">
+<div>InquisLab © 2026</div>
+<div><a href="mailto:hello@inquislab.com">hello@inquislab.com</a></div>
+<div>Remote · India</div>
+</div>
+</footer>
+
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>o.observe(el));
+</script>
 </body>
 </html>

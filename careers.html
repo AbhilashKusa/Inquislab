@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — InquisLab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a0a;--paper:#f2ede3;--paper-dim:#d4cfc3;--paper-ghost:#8a857b;--rule:#2a2824;--rule-soft:#1c1a17;--accent:#d96c3a;--accent-dim:#8a4322;--serif:'Fraunces',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--serif);font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:99;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.4) 100%)}
+.container{max-width:1180px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
+.narrow{max-width:880px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
+
+nav{padding:28px 0;border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(10,10,10,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
+.nav-inner{display:flex;justify-content:space-between;align-items:baseline;max-width:1180px;margin:0 auto;padding:0 48px}
+.logo{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.02em;font-style:italic}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:36px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--paper-ghost)}
+.nav-links a{color:inherit;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a.current{color:var(--accent)}
+
+.hero{padding:140px 0 100px;border-bottom:1px solid var(--rule)}
+.hero-meta{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--paper-ghost);margin-bottom:48px;display:flex;align-items:center;gap:16px}
+.hero-meta::before{content:'';width:40px;height:1px;background:var(--accent)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(44px,6.5vw,88px);line-height:1.05;letter-spacing:-.025em;max-width:1000px;margin-bottom:40px}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero-lead{font-size:20px;line-height:1.55;color:var(--paper-dim);max-width:680px;font-weight:300}
+.hero-lead em{font-style:italic;color:var(--paper)}
+
+.teams{padding:100px 0;border-bottom:1px solid var(--rule)}
+.teams-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);margin-bottom:48px;display:flex;align-items:center;gap:16px}
+.teams-label::before{content:'';width:40px;height:1px;background:var(--accent)}
+.teams h2{font-family:var(--serif);font-weight:300;font-size:44px;line-height:1.05;letter-spacing:-.02em;margin-bottom:32px;max-width:820px}
+.teams h2 em{font-style:italic;color:var(--accent)}
+.teams-intro{font-size:18px;line-height:1.6;color:var(--paper-dim);max-width:780px;font-weight:300}
+.teams-intro em{font-style:italic;color:var(--paper)}
+
+.team-block{padding:80px 0;border-top:1px solid var(--rule)}
+.team-head{display:flex;align-items:baseline;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+.team-num{font-family:var(--mono);font-size:11px;color:var(--paper-ghost);letter-spacing:.2em}
+.team-name{font-family:var(--serif);font-size:36px;font-weight:400;letter-spacing:-.015em;line-height:1.1}
+.team-name em{font-style:italic;color:var(--accent)}
+.team-desc{font-size:18px;color:var(--paper-dim);line-height:1.6;max-width:820px;margin-bottom:56px;font-weight:300}
+.team-desc em{font-style:italic;color:var(--paper)}
+
+.role{display:grid;grid-template-columns:1fr 2fr;gap:72px;padding:48px 0;border-top:1px solid var(--rule-soft)}
+.role:last-child{border-bottom:1px solid var(--rule-soft)}
+.role-left{position:sticky;top:120px;align-self:start}
+.role-tag{font-family:var(--mono);font-size:10px;color:var(--paper-ghost);letter-spacing:.2em;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.role-tag::before{content:'';width:20px;height:1px;background:var(--accent)}
+.role-title{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-.01em;line-height:1.15;margin-bottom:20px}
+.role-title em{font-style:italic;color:var(--accent)}
+.role-quick{font-family:var(--mono);font-size:11px;color:var(--paper-ghost);letter-spacing:.1em;text-transform:uppercase;line-height:1.8}
+
+.role-right > p:first-child{font-family:var(--serif);font-size:20px;line-height:1.55;color:var(--paper);margin-bottom:36px;font-weight:300}
+.role-right > p:first-child em{font-style:italic;color:var(--accent)}
+.role-section{margin-top:32px}
+.role-section h4{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--accent);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--rule-soft)}
+.role-section ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.role-section li{color:var(--paper-dim);padding-left:24px;position:relative;font-size:16px;line-height:1.6}
+.role-section li::before{content:'→';position:absolute;left:0;color:var(--accent-dim);font-family:var(--mono);font-size:14px}
+.role-section li em{font-style:italic;color:var(--paper)}
+.role-section li strong{font-weight:400;color:var(--paper)}
+
+.apply-btn{display:inline-flex;align-items:center;gap:12px;margin-top:40px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);text-decoration:none;padding:16px 24px;border:1px solid var(--accent-dim);transition:all .3s}
+.apply-btn:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.apply-btn .arrow{transition:transform .3s}
+.apply-btn:hover .arrow{transform:translateX(4px)}
+
+.deal{padding:80px 0;border-bottom:1px solid var(--rule)}
+.deal-grid{display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start}
+.deal-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--accent);display:flex;align-items:center;gap:16px}
+.deal-label::before{content:'';width:40px;height:1px;background:var(--accent)}
+.deal p{font-family:var(--serif);font-size:20px;line-height:1.6;color:var(--paper-dim);margin-bottom:24px;font-weight:300}
+.deal p:last-child{margin-bottom:0}
+.deal em{font-style:italic;color:var(--paper)}
+.deal strong{font-weight:400;color:var(--accent);font-style:italic}
+
+.apply-section{padding:120px 0;text-align:center}
+.apply-pre{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--paper-ghost);margin-bottom:32px}
+.apply-section h2{font-family:var(--serif);font-weight:300;font-size:clamp(36px,5vw,64px);line-height:1.1;letter-spacing:-.025em;margin-bottom:48px;max-width:800px;margin-left:auto;margin-right:auto}
+.apply-section h2 em{font-style:italic;color:var(--accent)}
+.apply-email{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--paper);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:4px;transition:all .3s}
+.apply-email:hover{color:var(--accent)}
+.apply-note{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--paper-ghost);margin-top:40px;line-height:1.9}
+
+footer{border-top:1px solid var(--rule);padding:32px 0;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--paper-ghost)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:0 auto;padding:0 48px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-meta{animation:fadeUp .8s ease .1s both}
+.hero h1{animation:fadeUp .9s ease .25s both}
+.hero-lead{animation:fadeUp .9s ease .45s both}
+
+@media (max-width:900px){
+.container,.narrow{padding:0 24px}
+.nav-inner,.footer-inner{padding:0 24px}
+.hero{padding:80px 0 60px}
+.hero h1{font-size:36px}
+.hero-lead{font-size:17px}
+.teams,.team-block{padding:60px 0}
+.teams h2{font-size:32px}
+.team-name{font-size:28px}
+.role{grid-template-columns:1fr;gap:24px;padding:40px 0}
+.role-left{position:static}
+.role-title{font-size:24px}
+.deal,.apply-section{padding:60px 0}
+.deal-grid{grid-template-columns:1fr;gap:24px}
+.apply-email{font-size:20px;word-break:break-all}
+.nav-links{gap:20px;font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="/" class="logo" style="text-decoration:none;color:var(--paper)">Inquis<span>·</span>Lab</a>
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/careers" class="current">Careers</a>
+<a href="mailto:hello@inquislab.com">Contact</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<div class="hero-meta">Careers · Open roles · Remote, India</div>
+<h1>We're building AI software for the <em>industries that build everything else.</em></h1>
+<p class="hero-lead">Refineries, chemical plants, distribution centers, factories — the physical systems the world depends on. Their software is decades old. <em>We're changing that.</em></p>
+</div>
+</section>
+
+<section class="teams">
+<div class="container">
+<div class="teams-label">How we're hiring</div>
+<h2>Two teams. <em>Four people.</em> Working in pairs.</h2>
+<p class="teams-intro">We're building one product, Reliability Twin, and taking it to market. That needs two teams: <em>a product team that builds it, and a marketing team that sells it.</em> Each team is two people working together — research + execution, ground truth + creative output.</p>
+</div>
+</section>
+
+<!-- PRODUCT TEAM -->
+<div class="team-block">
+<div class="container">
+<div class="team-head">
+<div class="team-num">Team 01</div>
+<h3 class="team-name">Product <em>·</em> Engineering</h3>
+</div>
+<p class="team-desc">Two engineers building Reliability Twin together. One leans toward research and architecture — mapping the problem space, running POCs, deciding how the system should work. The other leans toward execution — writing the production code, shipping the features, owning deployment. <em>Both do both.</em> They pair, they argue, they ship.</p>
+
+<div class="role reveal">
+<div class="role-left">
+<div class="role-tag">Role 01</div>
+<div class="role-title">Engineer · <em>Research</em></div>
+<div class="role-quick">Remote · India<br>Full-time<br>Work with founder</div>
+</div>
+<div class="role-right">
+<p>You'll be the <em>half of the product team that maps the territory</em> before we build. You'll read the industrial standards, talk to plant engineers, run small POCs to test whether an idea can actually work, and hand clear specs to your pair. You're building the thinking that the code stands on.</p>
+
+<div class="role-section">
+<h4>What you'll work on</h4>
+<ul>
+<li>Read ISA-18.2 end-to-end and turn it into a concrete product spec</li>
+<li>Run POCs fast — three approaches in a week, not one perfected in a month</li>
+<li>Own the data model: alarm events, asset hierarchies, rationalization rules</li>
+<li>Interview reliability managers to understand the real workflow, not the theoretical one</li>
+<li>Write the architecture docs your pair builds against</li>
+<li>Decide the technical direction with the founder — you're not executing someone else's plan</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>What we look for</h4>
+<ul>
+<li>You've built something that required you to <em>figure out the approach yourself</em></li>
+<li>Comfortable with Python, familiar with LangChain and LLM APIs</li>
+<li>You read research papers, standards docs, or long-form technical writing for fun</li>
+<li>You can argue for an idea, then change your mind when the evidence changes</li>
+<li>Bonus: any exposure to industrial data, time-series, or signal processing</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>Leadership &amp; growth</h4>
+<ul>
+<li>You'll own the research direction of the product from day one</li>
+<li>As we grow, you lead the research side of engineering — hire, mentor, shape the team</li>
+<li>You'll learn industrial systems from the inside, not from blog posts</li>
+</ul>
+</div>
+
+<a href="mailto:careers@inquislab.com?subject=Engineer · Research — Application&amp;body=Tell us:%0D%0A%0D%0A1. Something you've built or worked on that you're proud of%0D%0A2. What you think we should build next%0D%0A3. Why this role, for you%0D%0A%0D%0AAttach your GitHub, writing, or any link that shows how you think. No cover letters." class="apply-btn"><span>Apply now</span><span class="arrow">→</span></a>
+</div>
+</div>
+
+<div class="role reveal">
+<div class="role-left">
+<div class="role-tag">Role 02</div>
+<div class="role-title">Engineer · <em>Build</em></div>
+<div class="role-quick">Remote · India<br>Full-time<br>Work with founder</div>
+</div>
+<div class="role-right">
+<p>You'll be the <em>half of the product team that ships</em>. You take the specs, the POCs, the data model — and turn them into production software that real plant engineers use on Monday morning. You own the app end-to-end: upload, processing, reports, dashboard, deployment.</p>
+
+<div class="role-section">
+<h4>What you'll work on</h4>
+<ul>
+<li>Build the core web app: data upload, processing pipeline, report generation, customer dashboard</li>
+<li>Wire up the LLM pipeline that turns raw industrial data into audit-grade reports</li>
+<li>Own deployment, monitoring, and the first customer's production experience</li>
+<li>Pair with the research engineer — they spec, you execute, you push back when the spec is wrong</li>
+<li>Talk to customers directly. Fix things before they complain</li>
+<li>Ship every week. We'd rather have something live than something perfect</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>What we look for</h4>
+<ul>
+<li>React or Next.js fluency, Node or Python backend, comfortable with Postgres</li>
+<li>A GitHub with projects you actually finished — not just course work</li>
+<li>You've shipped something that people used (even 10 people counts)</li>
+<li>Taste. You can look at a UI and know what's wrong with it</li>
+<li>The instinct to ship, learn, iterate — not to over-engineer and delay</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>Leadership &amp; growth</h4>
+<ul>
+<li>You'll own the production codebase of our flagship product from day one</li>
+<li>As we grow, you lead the build side of engineering — hire, mentor, set standards</li>
+<li>You'll learn how to build software that runs in regulated industrial environments</li>
+</ul>
+</div>
+
+<a href="mailto:careers@inquislab.com?subject=Engineer · Build — Application&amp;body=Tell us:%0D%0A%0D%0A1. Something you've built or worked on that you're proud of%0D%0A2. What you think we should build next%0D%0A3. Why this role, for you%0D%0A%0D%0AAttach your GitHub, a deployed project, or any link that shows what you can ship. No cover letters." class="apply-btn"><span>Apply now</span><span class="arrow">→</span></a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MARKETING TEAM -->
+<div class="team-block">
+<div class="container">
+<div class="team-head">
+<div class="team-num">Team 02</div>
+<h3 class="team-name">Marketing <em>·</em> Growth</h3>
+</div>
+<p class="team-desc">Two people finding the first hundred customers through AI-driven content and viral video. One goes to the ground — collecting real stories from real industrial workers and turning them into content hooks. The other turns those hooks into short videos, posts, and outreach that actually get watched and replied to. <em>They work with the product team to understand what they're selling, then deliver the videos that sell it.</em></p>
+
+<div class="role reveal">
+<div class="role-left">
+<div class="role-tag">Role 03</div>
+<div class="role-title">Marketing · <em>Ground</em></div>
+<div class="role-quick">Remote · India<br>Full-time<br>Work with founder</div>
+</div>
+<div class="role-right">
+<p>You're the <em>researcher and storyteller</em> of the marketing team. You find the real problems on the ground — by talking to plant operators, reading industry forums, watching what reliability managers complain about online. You turn those problems into stories, hooks, and angles that the creative half of the team can make content from.</p>
+
+<div class="role-section">
+<h4>What you'll work on</h4>
+<ul>
+<li>Talk to operators, reliability managers, and plant engineers — collect real problems in their words</li>
+<li>Monitor LinkedIn, Reddit, and industry forums for pain points we can build content around</li>
+<li>Build the target list: Indian refineries, chemical plants, warehouse DCs with real buyer names</li>
+<li>Write the hooks and scripts the video person turns into content</li>
+<li>Work with the product team to understand what we built, so you can explain it to customers</li>
+<li>Own the CRM, track every conversation, own the handoff to the founder for demos</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>What we look for</h4>
+<ul>
+<li>A writer. You know when a sentence is carrying its weight</li>
+<li>Natural curiosity about how factories, refineries, and warehouses actually work</li>
+<li>Comfortable cold-messaging strangers on LinkedIn and actually getting replies</li>
+<li>Resilience — you'll hear no 90 times before a yes, and you'll keep going</li>
+<li>Bonus: any B2B research, content, or sales experience</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>Leadership &amp; growth</h4>
+<ul>
+<li>You'll own the voice of InquisLab externally from day one</li>
+<li>As we grow, you lead the research and content side of GTM — hire, train, scale</li>
+<li>You'll learn how to find and sell to industrial buyers — a skill most marketers never get</li>
+</ul>
+</div>
+
+<a href="mailto:careers@inquislab.com?subject=Marketing · Ground — Application&amp;body=Tell us:%0D%0A%0D%0A1. Something you've written, researched, or built that you're proud of%0D%0A2. What you think we should build next%0D%0A3. Why this role, for you%0D%0A%0D%0AAttach writing samples, outreach examples, or any link that shows how you think. No cover letters." class="apply-btn"><span>Apply now</span><span class="arrow">→</span></a>
+</div>
+</div>
+
+<div class="role reveal">
+<div class="role-left">
+<div class="role-tag">Role 04</div>
+<div class="role-title">Marketing · <em>Video</em></div>
+<div class="role-quick">Remote · India<br>Full-time<br>Work with founder</div>
+</div>
+<div class="role-right">
+<p>You're the <em>creative half of the marketing team</em>. You take the problems, hooks, and stories the ground researcher brings you — and you turn them into short videos, posts, and campaigns that get watched. You use AI tools aggressively. You ship content every day.</p>
+
+<div class="role-section">
+<h4>What you'll work on</h4>
+<ul>
+<li>Turn raw industrial stories into 30-90 second videos that explain the problem and the product</li>
+<li>Use AI video tools (Runway, ElevenLabs, Descript, CapCut AI) to produce fast without a crew</li>
+<li>Run the LinkedIn, Twitter, and YouTube accounts — post daily, reply daily</li>
+<li>A/B test hooks, thumbnails, and first-3-seconds until something goes viral</li>
+<li>Work with the product team to film real product demos that don't look like product demos</li>
+<li>Turn customer wins into case-study videos that bring in more customers</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>What we look for</h4>
+<ul>
+<li>You've made videos people watched — YouTube, Reels, TikTok, anything with real views</li>
+<li>You use AI creative tools and know which ones are actually good right now</li>
+<li>A sense of what makes someone stop scrolling</li>
+<li>You can ship rough-and-fast today and polish tomorrow — not the other way around</li>
+<li>Bonus: any experience making B2B content, or selling something through video</li>
+</ul>
+</div>
+
+<div class="role-section">
+<h4>Leadership &amp; growth</h4>
+<ul>
+<li>You'll own the visual and video output of the company from day one</li>
+<li>As we grow, you lead the creative side of marketing — hire, direct, build the content engine</li>
+<li>You'll learn how to sell a technical product with video — one of the most valuable skills in modern GTM</li>
+</ul>
+</div>
+
+<a href="mailto:careers@inquislab.com?subject=Marketing · Video — Application&amp;body=Tell us:%0D%0A%0D%0A1. The best video or piece of content you've made%0D%0A2. What you think we should build next%0D%0A3. Why this role, for you%0D%0A%0D%0AShare links to your work — YouTube, Reels, TikTok, portfolio, anything. No cover letters." class="apply-btn"><span>Apply now</span><span class="arrow">→</span></a>
+</div>
+</div>
+</div>
+</div>
+
+<section class="deal">
+<div class="container">
+<div class="deal-grid">
+<div class="deal-label">The money</div>
+<div>
+<p>Starting stipend. <strong>We'll talk real numbers in the conversation</strong> — we want to know what works for you and match it to where we are. As the company generates revenue, your compensation grows with it.</p>
+<p>Six-month starting term, then full-time conversion with equity and a real raise. <em>The people here at the start will run the teams later.</em></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="apply-section">
+<div class="narrow">
+<div class="apply-pre">How to apply</div>
+<h2>Send us <em>something real.</em></h2>
+<a href="mailto:careers@inquislab.com" class="apply-email">careers@inquislab.com</a>
+<div class="apply-note">Click any role above · Or email us directly<br>Tell us what you've built, what we should build, why this role<br>No cover letters · We reply within 48 hours</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-inner">
+<div>InquisLab © 2026</div>
+<div>Remote · India</div>
+</div>
+</footer>
+
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>
