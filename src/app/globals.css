@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #050505;
+    --fg: #f0f0f0;
+    --fg-dim: #888;
+    --fg-ghost: #555;
+    --accent: #d96c3a;
+    --accent-soft: rgba(217,108,58,.12);
+    --rule: rgba(255,255,255,.06);
+    --rule-hover: rgba(255,255,255,.12);
+    --font: 'Poppins', system-ui, sans-serif;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grain overlay */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Buttons */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font);
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.04em;
+  padding:14px 28px;
+  border-radius:6px;
+  text-decoration:none;
+  transition:all .3s ease;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary {
+  background:var(--accent);
+  color:#fff;
+}
+.btn-primary:hover {
+  background:#e07a4a;
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(217,108,58,.25);
+}
+.btn-outline {
+  background:transparent;
+  color:var(--fg-dim);
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-outline:hover {
+  border-color:rgba(255,255,255,.25);
+  color:var(--fg);
+  transform:translateY(-1px);
+}
+.btn .arrow{transition:transform .3s}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* Global animations */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}

@@ -1,0 +1,174 @@
+[
+  {
+    "id": "engineer-research",
+    "team": "Team 01 · Product Engineering",
+    "title": "Engineer · Research",
+    "location": "Remote · India",
+    "type": "Full-time",
+    "tags": ["Work with founder"],
+    "summary": "You'll be the <em>half of the product team that maps the territory</em> before we build. You'll read the industrial standards, talk to plant engineers, run small POCs to test whether an idea can actually work, and hand clear specs to your pair.",
+    "sections": [
+      {
+        "title": "What you'll work on",
+        "bullets": [
+          "Read ISA-18.2 end-to-end and turn it into a <em>concrete product spec</em>",
+          "Run POCs fast — three approaches in a week, not one perfected in a month",
+          "Own the data model: alarm events, asset hierarchies, rationalization rules",
+          "Interview reliability managers to understand the <em>real workflow</em>, not the theoretical one",
+          "Write the architecture docs your pair builds against",
+          "Decide the technical direction with the founder — you're not executing someone else's plan"
+        ]
+      },
+      {
+        "title": "What we look for",
+        "bullets": [
+          "You've built something that required you to <em>figure out the approach yourself</em>",
+          "Comfortable with Python, familiar with LangChain and LLM APIs",
+          "You read research papers, standards docs, or long-form technical writing for fun",
+          "You can argue for an idea, then change your mind when the evidence changes",
+          "Bonus: any exposure to industrial data, time-series, or signal processing"
+        ]
+      },
+      {
+        "title": "Leadership & growth",
+        "bullets": [
+          "You'll own the <em>research direction</em> of the product from day one",
+          "As we grow, you lead the research side of engineering — hire, mentor, shape the team",
+          "You'll learn industrial systems from the inside, not from blog posts"
+        ]
+      }
+    ],
+    "applyEmail": "careers@inquislab.com",
+    "applySubject": "Engineer · Research — Application",
+    "applyBody": "Tell us:\\n\\n1. Something you've built or worked on that you're proud of\\n2. What you think we should build next\\n3. Why this role, for you\\n\\nAttach your GitHub, writing, or any link that shows how you think. No cover letters."
+  },
+  {
+    "id": "engineer-build",
+    "team": "Team 01 · Product Engineering",
+    "title": "Engineer · Build",
+    "location": "Remote · India",
+    "type": "Full-time",
+    "tags": ["Work with founder"],
+    "summary": "You'll be the <em>half of the product team that ships</em>. You take the specs, the POCs, the data model — and turn them into production software that real plant engineers use on Monday morning.",
+    "sections": [
+      {
+        "title": "What you'll work on",
+        "bullets": [
+          "Build the core web app: data upload, processing pipeline, report generation, customer dashboard",
+          "Wire up the LLM pipeline that turns raw industrial data into <em>audit-grade reports</em>",
+          "Own deployment, monitoring, and the first customer's production experience",
+          "Pair with the research engineer — they spec, you execute, you push back when the spec is wrong",
+          "Talk to customers directly. Fix things before they complain",
+          "Ship every week. We'd rather have something live than something perfect"
+        ]
+      },
+      {
+        "title": "What we look for",
+        "bullets": [
+          "React or Next.js fluency, Node or Python backend, comfortable with Postgres",
+          "A GitHub with projects you <em>actually finished</em> — not just course work",
+          "You've shipped something that people used (even 10 people counts)",
+          "Taste. You can look at a UI and know what's wrong with it",
+          "The instinct to ship, learn, iterate — not to over-engineer and delay"
+        ]
+      },
+      {
+        "title": "Leadership & growth",
+        "bullets": [
+          "You'll own the <em>production codebase</em> of our flagship product from day one",
+          "As we grow, you lead the build side of engineering — hire, mentor, set standards",
+          "You'll learn how to build software that runs in regulated industrial environments"
+        ]
+      }
+    ],
+    "applyEmail": "careers@inquislab.com",
+    "applySubject": "Engineer · Build — Application",
+    "applyBody": "Tell us:\\n\\n1. Something you've built or worked on that you're proud of\\n2. What you think we should build next\\n3. Why this role, for you\\n\\nAttach your GitHub, a deployed project, or any link that shows what you can ship. No cover letters."
+  },
+  {
+    "id": "marketing-ground",
+    "team": "Team 02 · Marketing & Growth",
+    "title": "Marketing · Ground",
+    "location": "Remote · India",
+    "type": "Full-time",
+    "tags": ["Work with founder"],
+    "summary": "You're the <em>researcher and storyteller</em> of the marketing team. You find the real problems on the ground — by talking to plant operators, reading industry forums, watching what reliability managers complain about online.",
+    "sections": [
+      {
+        "title": "What you'll work on",
+        "bullets": [
+          "Talk to operators, reliability managers, and plant engineers — collect <em>real problems in their words</em>",
+          "Monitor LinkedIn, Reddit, and industry forums for pain points we can build content around",
+          "Build the target list: Indian refineries, chemical plants, warehouse DCs with real buyer names",
+          "Write the hooks and scripts the video person turns into content",
+          "Work with the product team to understand what we built, so you can explain it to customers",
+          "Own the CRM, track every conversation, own the handoff to the founder for demos"
+        ]
+      },
+      {
+        "title": "What we look for",
+        "bullets": [
+          "A writer. You know when a sentence is <em>carrying its weight</em>",
+          "Natural curiosity about how factories, refineries, and warehouses actually work",
+          "Comfortable cold-messaging strangers on LinkedIn and actually getting replies",
+          "Resilience — you'll hear no 90 times before a yes, and you'll keep going",
+          "Bonus: any B2B research, content, or sales experience"
+        ]
+      },
+      {
+        "title": "Leadership & growth",
+        "bullets": [
+          "You'll own the <em>voice of InquisLab</em> externally from day one",
+          "As we grow, you lead the research and content side of GTM — hire, train, scale",
+          "You'll learn how to find and sell to industrial buyers — a skill most marketers never get"
+        ]
+      }
+    ],
+    "applyEmail": "careers@inquislab.com",
+    "applySubject": "Marketing · Ground — Application",
+    "applyBody": "Tell us:\\n\\n1. Something you've written, researched, or built that you're proud of\\n2. What you think we should build next\\n3. Why this role, for you\\n\\nAttach writing samples, outreach examples, or any link that shows how you think. No cover letters."
+  },
+  {
+    "id": "marketing-video",
+    "team": "Team 02 · Marketing & Growth",
+    "title": "Marketing · Video",
+    "location": "Remote · India",
+    "type": "Full-time",
+    "tags": ["Work with founder"],
+    "summary": "You're the <em>creative half of the marketing team</em>. You take the problems, hooks, and stories the ground researcher brings you — and you turn them into short videos, posts, and campaigns that get watched.",
+    "sections": [
+      {
+        "title": "What you'll work on",
+        "bullets": [
+          "Turn raw industrial stories into <em>30-90 second videos</em> that explain the problem and the product",
+          "Use AI video tools (Runway, ElevenLabs, Descript, CapCut AI) to produce fast without a crew",
+          "Run the LinkedIn, Twitter, and YouTube accounts — post daily, reply daily",
+          "A/B test hooks, thumbnails, and first-3-seconds until something goes viral",
+          "Work with the product team to film real product demos that don't look like product demos",
+          "Turn customer wins into case-study videos that bring in more customers"
+        ]
+      },
+      {
+        "title": "What we look for",
+        "bullets": [
+          "You've made videos people watched — YouTube, Reels, TikTok, anything with <em>real views</em>",
+          "You use AI creative tools and know which ones are actually good right now",
+          "A sense of what makes someone stop scrolling",
+          "You can ship rough-and-fast today and polish tomorrow — not the other way around",
+          "Bonus: any experience making B2B content, or selling something through video"
+        ]
+      },
+      {
+        "title": "Leadership & growth",
+        "bullets": [
+          "You'll own the <em>visual and video output</em> of the company from day one",
+          "As we grow, you lead the creative side of marketing — hire, direct, build the content engine",
+          "You'll learn how to sell a technical product with video — one of the most valuable skills in modern GTM"
+        ]
+      }
+    ],
+    "applyEmail": "careers@inquislab.com",
+    "applySubject": "Marketing · Video — Application",
+    "applyBody": "Tell us:\\n\\n1. The best video or piece of content you've made\\n2. What you think we should build next\\n3. Why this role, for you\\n\\nShare links to your work — YouTube, Reels, TikTok, portfolio, anything. No cover letters."
+  }
+]
