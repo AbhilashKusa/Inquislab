@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import SiteNav from '@/components/SiteNav';
 
 export const metadata: Metadata = {
   title: 'InquisLab — AI Software for Industrial Operations',
@@ -15,18 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
-        <nav className="site-nav">
-          <div className="nav-inner">
-            <Link href="/" className="logo">
-              Inquis<span>Lab</span>
-            </Link>
-            <div className="nav-links">
-              <Link href="/#roles">Roles</Link>
-              <Link href="/admin">Controller</Link>
-              <Link href="mailto:careers@inquislab.com">Contact</Link>
-            </div>
-          </div>
-        </nav>
+        <SiteNav />
 
         <main>{children}</main>
 

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "industrial-automation",
+    "status": "Hiring",
+    "projectNumber": "PROJECT 01",
+    "title": "Industrial Automation",
+    "summary": "AI Software for the Industries That Build Everything Else. We're rebuilding legacy control systems for refineries and chemical plants.",
+    "heroTag": "Project 01 · Industrial Automation",
+    "heroH1": "AI Software for the<br/>Industries That Build<br/><em>Everything Else.</em>",
+    "heroSub": "Refineries, chemical plants, distribution centers, factories — the physical systems the world depends on run on software that's decades old. We're changing that.",
+    "stripItems": [
+      {
+        "num": "01",
+        "title": "Alarm Overload",
+        "desc": "Operators drown in thousands of alarms. Critical signals get lost in the noise. We fix this."
+      },
+      {
+        "num": "02",
+        "title": "Rationalization",
+        "desc": "Months of spreadsheet-based alarm review eliminated through AI-driven analysis."
+      },
+      {
+        "num": "03",
+        "title": "Intelligence",
+        "desc": "Pattern recognition and predictive insights for heavy industrial operations."
+      }
+    ],
+    "rolesTitle": "Open Roles",
+    "rolesSub": "Join us in building AI for industrial operations.",
+    "ctaPre": "How to apply",
+    "ctaTitle": "Send us <em>something real.</em>",
+    "ctaEmail": "careers@inquislab.com",
+    "ctaNote": "Click any role above · Or email us directly<br/>Tell us what you've built, why it matters, and what you want to build here.<br/>No cover letters · We care about the slope of your trajectory, not the y-intercept."
+  }
+]
