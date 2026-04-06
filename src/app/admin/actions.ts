@@ -3,13 +3,16 @@ import { Octokit } from '@octokit/rest';
 import fs from 'fs';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
-import { Job, validatePassword, buildJobFromForm } from '@/lib/job-utils';
+import { Job, buildJobFromForm, validatePassword } from '@/lib/job-utils';
 import { Project, buildProjectFromForm } from '@/lib/project-utils';
 
 const REPO_OWNER = 'AbhilashKusa';
 const REPO_NAME = 'Inquislab';
 const JOBS_PATH = 'src/data/jobs.json';
 const PROJECTS_PATH = 'src/data/projects.json';
+
+type Item = Job | Project;
+type ItemType = 'job' | 'project';
 
 function getFilePath(relativePath: string) {
   return path.join(process.cwd(), relativePath);
@@ -65,54 +68,78 @@ async function saveData<T>(relativePath: string, data: T[], commitMessage: strin
   revalidatePath('/careers');
 }
 
+// ─── GENERIC HANDLERS ───
+
+async function publish(type: ItemType, formData: FormData) {
+    validatePassword(formData.get('password')?.toString() || null);
+
+    const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
+    const data = readData<Item>(path);
+    const newItem = type === 'job' ? buildJobFromForm(formData) : buildProjectFromForm(formData);
+
+    if (data.some(item => item.id === newItem.id)) {
+        throw new Error(`${type} with ID "${newItem.id}" already exists.`);
+    }
+
+    data.push(newItem);
+    await saveData(path, data, `Controller: Published ${type} "${newItem.title}"`);
+    if (type === 'job') {
+        revalidatePath(`/careers/${newItem.id}`);
+    }
+    return { success: true };
+}
+
+async function update(type: ItemType, formData: FormData) {
+    validatePassword(formData.get('password')?.toString() || null);
+
+    const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
+    const data = readData<Item>(path);
+    const itemId = formData.get('id')?.toString();
+    const index = data.findIndex(item => item.id === itemId);
+
+    if (index === -1) throw new Error(`${type} "${itemId}" not found.`);
+
+    const updatedItem = type === 'job' ? buildJobFromForm(formData) : buildProjectFromForm(formData);
+    updatedItem.id = itemId!;
+    data[index] = updatedItem;
+    await saveData(path, data, `Controller: Updated ${type} "${updatedItem.title}"`);
+    if (type === 'job') {
+        revalidatePath(`/careers/${updatedItem.id}`);
+    }
+    return { success: true };
+}
+
+async function del(type: ItemType, formData: FormData) {
+    validatePassword(formData.get('password')?.toString() || null);
+
+    const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
+    const data = readData<Item>(path);
+    const itemId = formData.get('id')?.toString();
+    const index = data.findIndex(item => item.id === itemId);
+
+    if (index === -1) throw new Error(`${type} "${itemId}" not found.`);
+
+    const item = data[index];
+    data.splice(index, 1);
+    await saveData(path, data, `Controller: Deleted ${type} "${item.title}"`);
+    return { success: true };
+}
+
 // ─── JOBS ───
 export async function getJobs() {
   return readData<Job>(JOBS_PATH);
 }
 
 export async function publishJob(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const jobs = await getJobs();
-  const newJob = buildJobFromForm(formData);
-
-  if (jobs.some(j => j.id === newJob.id)) {
-    throw new Error(`Job with ID "${newJob.id}" already exists.`);
-  }
-
-  jobs.push(newJob);
-  await saveData(JOBS_PATH, jobs, `Controller: Published job "${newJob.title}"`);
-  revalidatePath(`/careers/${newJob.id}`);
-  return { success: true };
+  return publish('job', formData);
 }
 
 export async function updateJob(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const jobs = await getJobs();
-  const jobId = formData.get('id')?.toString();
-  const index = jobs.findIndex(j => j.id === jobId);
-
-  if (index === -1) throw new Error(`Job "${jobId}" not found.`);
-
-  const updatedJob = buildJobFromForm(formData);
-  updatedJob.id = jobId!;
-  jobs[index] = updatedJob;
-  await saveData(JOBS_PATH, jobs, `Controller: Updated job "${updatedJob.title}"`);
-  revalidatePath(`/careers/${updatedJob.id}`);
-  return { success: true };
+  return update('job', formData);
 }
 
 export async function deleteJob(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const jobs = await getJobs();
-  const jobId = formData.get('id')?.toString();
-  const index = jobs.findIndex(j => j.id === jobId);
-
-  if (index === -1) throw new Error(`Job "${jobId}" not found.`);
-
-  const job = jobs[index];
-  jobs.splice(index, 1);
-  await saveData(JOBS_PATH, jobs, `Controller: Deleted job "${job.title}"`);
-  return { success: true };
+  return del('job', formData);
 }
 
 // ─── PROJECTS ───
@@ -121,54 +148,19 @@ export async function getProjects() {
 }
 
 export async function publishProject(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const projects = await getProjects();
-  const newProj = buildProjectFromForm(formData);
-
-  if (projects.some(p => p.id === newProj.id)) {
-    throw new Error(`Project with ID "${newProj.id}" already exists.`);
-  }
-
-  projects.push(newProj);
-  await saveData(PROJECTS_PATH, projects, `Controller: Published project "${newProj.title}"`);
-  revalidatePath(`/careers/${newProj.id}`);
-  return { success: true };
+  return publish('project', formData);
 }
 
 export async function updateProject(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const projects = await getProjects();
-  const projId = formData.get('id')?.toString();
-  const index = projects.findIndex(p => p.id === projId);
-
-  if (index === -1) throw new Error(`Project "${projId}" not found.`);
-
-  const updatedProj = buildProjectFromForm(formData);
-  updatedProj.id = projId!;
-  projects[index] = updatedProj;
-  await saveData(PROJECTS_PATH, projects, `Controller: Updated project "${updatedProj.title}"`);
-  revalidatePath(`/careers/${updatedProj.id}`);
-  return { success: true };
+  return update('project', formData);
 }
 
 export async function deleteProject(formData: FormData) {
-  validatePassword(formData.get('password')?.toString() || null);
-  const projects = await getProjects();
-  const projId = formData.get('id')?.toString();
-  const index = projects.findIndex(p => p.id === projId);
-
-  if (index === -1) throw new Error(`Project "${projId}" not found.`);
-
-  const proj = projects[index];
-  projects.splice(index, 1);
-  await saveData(PROJECTS_PATH, projects, `Controller: Deleted project "${proj.title}"`);
-  return { success: true };
+  return del('project', formData);
 }
 
 // ─── AUTH ───
 export async function authenticate(password: string) {
-  const current = process.env.ADMIN_PASSWORD || '';
-  if (!current) throw new Error('ADMIN_PASSWORD environment variable is not set.');
-  if (password !== current) throw new Error('Invalid controller password.');
+  validatePassword(password);
   return { success: true };
 }

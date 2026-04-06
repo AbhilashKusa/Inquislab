@@ -23,8 +23,7 @@ export default function RootLayout({
         <footer className="site-footer">
           <div className="footer-inner">
             <div>InquisLab © 2026</div>
-            <Link href="mailto:hello@inquislab.com">hello@inquislab.com</Link>
-            <div>Remote · India</div>
+            <Link href="mailto:careers@inquislab.com">careers@inquislab.com</Link>
           </div>
         </footer>
       </body>

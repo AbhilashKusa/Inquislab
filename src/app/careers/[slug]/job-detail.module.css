@@ -1,0 +1,199 @@
+.jdPage { max-width: 1100px; margin: 0 auto; padding: 140px 48px 80px; }
+
+.jdBreadcrumb { font-size: 13px; color: var(--fg-ghost); margin-bottom: 40px; display: flex; align-items: center; gap: 8px; }
+.jdBreadcrumb a { color: var(--fg-ghost) !important; text-decoration: none !important; transition: color .3s; }
+.jdBreadcrumb a:hover { color: var(--fg-dim) !important; }
+.jdSep { color: var(--fg-ghost); opacity: .5; }
+.jdCurrent { color: var(--fg-dim); }
+
+.jdHeader { margin-bottom: 56px; }
+.jdTitle { font-size: clamp(40px, 6vw, 64px) !important; font-weight: 600 !important; line-height: 1.1 !important; letter-spacing: -.03em !important; color: var(--fg); }
+
+.jdGrid { display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start; }
+
+.jdMain { }
+
+.jdSummary { font-size: 20px; color: var(--fg-ghost); line-height: 1.6; font-weight: 300; margin-bottom: 64px; }
+.jdSummary em { font-style: normal; color: var(--fg); }
+
+.jdSection { margin-bottom: 64px; }
+.jdSectionTitle { font-size: 24px; font-weight: 500; letter-spacing: -.02em; color: var(--fg); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+
+.jdBullets { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
+.jdBullets li { color: var(--fg-dim); padding-left: 24px; position: relative; font-size: 16px; line-height: 1.7; }
+.jdBullets li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; opacity: 0.8; }
+.jdBullets li em { font-style: normal; color: var(--fg); }
+.jdBullets li strong { font-weight: 500; color: var(--fg); }
+
+.jdSidebar { }
+.jdSidebarInner { position: sticky; top: 110px; padding: 32px; background: rgba(255,255,255,0.015); border: 1px solid var(--rule); border-radius: 12px; }
+.jdTeam { font-size: 12px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+
+.jdPills { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.jdPill { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--fg-dim); font-weight: 400; }
+.jdPill svg { color: var(--fg-ghost); }
+.jdPillAccent { color: var(--accent); }
+.jdPillAccent svg { color: var(--accent); }
+
+.jdActions { display: flex; flex-direction: column; gap: 12px; }
+.jdApplyBtn, .jdAskBtn { width: 100%; justify-content: center; padding: 16px; font-size: 14px; }
+
+/* ─── Application Form ─── */
+.applySection {
+  margin-top: 80px;
+  padding-top: 80px;
+  border-top: 1px solid var(--rule);
+}
+
+.applyHeader {
+  margin-bottom: 48px;
+}
+
+.applyHeader h2 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.applyHeader p {
+  font-size: 16px;
+  color: var(--fg-dim);
+}
+
+.applyForm {
+  max-width: 700px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-ghost);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.input, .textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255,255,255,0.05);
+}
+
+.fileInputWrapper {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 40px;
+  border: 2px dashed var(--rule);
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fileInput:hover {
+  border-color: var(--accent-dim);
+  background: rgba(217,108,58,0.02);
+}
+
+.fileInput input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fileLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--fg-dim);
+}
+
+.fileLabel svg {
+  color: var(--accent);
+}
+
+.fileLabel span {
+  font-size: 14px;
+}
+
+.fileSelected {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.statusMessage {
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.statusMessage.success {
+  background: rgba(34,197,94,0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.2);
+}
+
+.statusMessage.error {
+  background: rgba(239,68,68,0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,0.2);
+}
+
+@media(max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jdBackLink { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg-ghost) !important; text-decoration: none !important; margin-top: 24px; padding-top: 40px; border-top: 1px solid var(--rule); transition: color .3s; }
+.jdBackLink:hover { color: var(--fg-dim) !important; }
+
+@media(max-width: 900px) {
+  .jdGrid { grid-template-columns: 1fr; gap: 56px; }
+  .jdSidebarInner { position: relative; top: 0; padding: 24px; }
+}
+@media(max-width: 768px) {
+  .jdPage { padding: 120px 24px 60px; }
+  .jdTitle { font-size: 36px !important; }
+  .jdPills { flex-direction: row; flex-wrap: wrap; gap: 20px; }
+}

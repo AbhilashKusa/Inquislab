@@ -14,7 +14,8 @@
     "gsap": "^3.14.2",
     "next": "16.2.2",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "resend": "^6.10.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
@@ -28,6 +29,7 @@
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "whatwg-fetch": "^3.6.20"
   }
 }

@@ -18,10 +18,8 @@ export function getPassword(): string {
   return process.env.ADMIN_PASSWORD || '';
 }
 
-export const PASSWORD = getPassword();
-
 export function validatePassword(password: string | null) {
-  const current = process.env.ADMIN_PASSWORD || '';
+  const current = getPassword();
   if (!current) throw new Error('ADMIN_PASSWORD environment variable is not set.');
   if (password !== current) throw new Error('Invalid controller password.');
 }
@@ -46,10 +44,12 @@ export function buildJobFromForm(formData: FormData): Omit<Job, 'applyEmail' | '
     })).filter(s => s.title && s.bullets.length > 0),
     applyEmail: 'careers@inquislab.com',
     applySubject: `${title} — Application`,
-    applyBody: 'Please share:\n\n1. Technical links you\'re proud of (GitHub, personal website, or a deployed project).\n2. A concise explanation of the most ambiguous technical problem you\'ve recently solved.\n3. Why you are interested in InquisLab.\n\nNo cover letters required.'
-  };
-}
+    applyBody: `Please share:
 
-export function buildMailtoLink(email: string, subject: string, body: string): string {
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+1. Technical links you're proud of (GitHub, personal website, or a deployed project).
+2. A concise explanation of the most ambiguous technical problem you've recently solved.
+3. Why you are interested in InquisLab.
+
+No cover letters required.`
+  };
 }

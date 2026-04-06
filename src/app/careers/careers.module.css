@@ -1,0 +1,129 @@
+.projectsContainer {
+  min-height: 80vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 140px 24px 100px;
+}
+.projectsHeader {
+  margin-bottom: 64px;
+}
+.projectsTag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.projectsHeader h1 {
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 600;
+  letter-spacing: -.03em;
+  margin-bottom: 16px;
+}
+.projectsHeader p {
+  font-size: 18px;
+  color: var(--fg-dim);
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.projectCard {
+  display: block;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255,255,255,0.01);
+  overflow: hidden;
+}
+.projectCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-soft);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.projectCard:hover {
+  border-color: var(--rule-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.projectCard:hover::before {
+  opacity: 1;
+}
+
+.projectWrapper {
+  position: relative;
+  z-index: 1;
+}
+.projectMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.projectNumber {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  color: var(--fg-ghost);
+}
+.projectStatus {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.projectCard h2 {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.projectCard p {
+  font-size: 16px;
+  color: var(--fg-dim);
+  line-height: 1.6;
+  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.projectArrow {
+  font-size: 24px;
+  color: var(--fg-ghost);
+  transition: transform 0.3s, color 0.3s;
+}
+.projectCard:hover .projectArrow {
+  color: var(--accent);
+  transform: translateX(8px);
+}
+
+@media(max-width: 768px) {
+  .projectsContainer { padding: 100px 24px 60px; }
+  .projectCard { padding: 32px 24px; }
+  .projectCard h2 { font-size: 26px; }
+}

@@ -16,6 +16,9 @@ const config: Config = {
     '!src/**/*.d.ts',
     '!src/data/**',
   ],
+  moduleNameMapper: {
+    '^@octokit/rest$': '<rootDir>/src/__mocks__/@octokit/rest.ts',
+  },
 };
 
 export default createJestConfig(config);

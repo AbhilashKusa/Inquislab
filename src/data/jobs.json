@@ -1,178 +1,178 @@
 [
   {
     "id": "engineer-research",
-    "team": "Team 01 · Product Engineering",
-    "title": "Test",
+    "team": "Team 01 · Research & Engineering",
+    "title": "Foundational Engineer",
     "location": "Remote · India",
     "type": "Full-time",
     "tags": [
       "Work with founder"
     ],
-    "summary": "Refineries, chemical plants, and major industrial facilities run on decades-old legacy documentation and fragmented alert systems. We are building the AI models to decipher and automate this infrastructure. As a Foundational Engineer, you will own the critical applied-AI territory, mapping deep industrial constraints and transforming raw operational data into robust architectural systems.",
+    "summary": "We are an AI research lab working vertically on industrial technology. We are building the models that will define industrial autonomy. As a Foundational Engineer, you will own the territory where intelligence meets the physical world, mapping deep constraints and transforming raw operational curiosity into robust architectural systems.",
     "sections": [
       {
         "title": "Expect to focus on",
         "bullets": [
-          "Deconstruct complex industrial protocols (like ISA-18.2) and translate them into concrete product specifications for our AI.\r",
-          "Rapidly prototype applied AI solutions using LLMs and Agentic workflows against real industrial time-series data.\r",
-          "Own the primary data architecture for alarm events, asset hierarchies, and rationalization logic.\r",
-          "Conduct high-level technical interviews with reliability managers to align models with pragmatic ground-truth workflows.\r",
-          "Architect scalable system blueprints and collaborate closely with product engineers for production deployment."
+          "Deconstruct complex industrial systems and translate them into concrete product specifications for our AI.",
+          "Rapidly prototype applied AI solutions using state-of-the-art models and agentic workflows.",
+          "Own the primary architecture for vertical autonomy and intelligence logic.",
+          "Research and implement patterns that allow AI to safely and effectively interact with physical infrastructure.",
+          "Architect scalable system blueprints that push the boundaries of what is possible in industrial settings."
         ]
       },
       {
         "title": "You may be a good fit if you",
         "bullets": [
-          "Demonstrated capability of architecting and solving ambiguous technical problems from absolute zero.\r",
-          "High fluency in Python, extensive experience with modern LLM orchestration frameworks (LangChain, LlamaIndex), and API integration.\r",
-          "A strong appetite for deep technical research, reading dry standard docs, and parsing complex research papers.\r",
-          "Strong operational flexibility; you adapt to new evidence quickly and do not over-index on initial assumptions.\r",
-          "Bonus: Prior exposure to industrial data sets, time-series forecasting, or signal processing."
+          "Demonstrated capability of architecting and solving ambiguous technical problems from absolute zero.",
+          "Deep technical curiosity and a drive to understand how things work at a fundamental level.",
+          "High fluency in Python and experience with modern AI orchestration frameworks.",
+          "A strong appetite for deep research and the ability to parse complex technical documentation.",
+          "Strong operational flexibility; you adapt to new evidence quickly and thrive on ambiguity."
         ]
       },
       {
         "title": "InquisLab is for you if",
         "bullets": [
-          "You will have supreme autonomy over the applied AI direction of a product serving the most critical infrastructure on earth.\r",
-          "You will act as an engineering pillar, setting the technical bar and heavily influencing future team scaling.\r",
-          "Uncapped career trajectory as we aggressively disrupt a multi-billion dollar industrial automation market."
+          "You want supreme autonomy over the direction of AI research in the industrial vertical.",
+          "You are driven by the question of what curiosity can do for humanity when applied to our most critical systems.",
+          "You want to be an engineering pillar in a lab that values deep technical work and rapid iteration."
         ]
       }
     ],
     "applyEmail": "careers@inquislab.com",
-    "applySubject": "Test — Application",
+    "applySubject": "Foundational Engineer — Application",
     "applyBody": "Please share:\n\n1. Technical links you're proud of (GitHub, personal website, or a deployed project).\n2. A concise explanation of the most ambiguous technical problem you've recently solved.\n3. Why you are interested in InquisLab.\n\nNo cover letters required."
   },
   {
     "id": "engineer-build",
-    "team": "Team 01 · Product Engineering",
+    "team": "Team 01 · Research & Engineering",
     "title": "Product Engineer",
     "location": "Remote · India",
     "type": "Full-time",
     "tags": [
       "Work with founder"
     ],
-    "summary": "Currently, the physical infrastructure that builds the world runs on legacy software. We are building the AI layer to replace it. As a Product Engineer at InquisLab, you will own the end-to-end execution of our flagship software, turning raw industrial data paradigms into hyper-reliable production systems used in strictly regulated environments.",
+    "summary": "We are building the vertical layer for industrial autonomy. As a Product Engineer at InquisLab, you will own the end-to-end execution of our flagship interfaces, turning raw industrial research into hyper-reliable production systems that feel alive and intuitive.",
     "sections": [
       {
         "title": "Expect to focus on",
         "bullets": [
-          "Architect and build our core web application, from robust data ingestion pipelines to the customer-facing dashboard.",
-          "Wire up and scale LLM pipelines capable of turning raw industrial data into high-fidelity, audit-grade reports.",
-          "Own infrastructure deployment, continuous monitoring, and the initial customer zero-to-one implementation.",
-          "Collaborate natively with applied researchers to transition complex industrial logic into stable, performant code.",
-          "Interface with customers to iterate aggressively, prioritizing rapid shipping over delayed perfection."
+          "Architect and build our core interfaces, ensuring a seamless connection between AI research and human operators.",
+          "Wire up and scale pipelines that turn complex research outputs into high-fidelity, actionable tools.",
+          "Own the zero-to-one implementation of our vertical technology stack.",
+          "Collaborate natively with researchers to transition complex industrial logic into stable, performant code.",
+          "Interface with users to iterate aggressively, prioritizing the 'feel' and reliability of the system."
         ]
       },
       {
         "title": "You may be a good fit if you",
         "bullets": [
-          "High fluency in modern web frameworks (React/Next.js) and backend architectures (Node/Python, PostgreSQL).",
-          "A proven track record of shipping end-to-end products that users actually rely on in production.",
-          "Strong product intuition and design taste; you can seamlessly identify and correct UX friction.",
-          "The instinct to iterate rapidly, ship iteratively, and thrive in high-velocity startup environments.",
-          "A zero-ego approach to problem solving and cross-functional engineering collaboration."
+          "High fluency in modern web frameworks (React/Next.js) and a deep appreciation for clean code.",
+          "A proven track record of shipping end-to-end products that reflect a deep understanding of user needs.",
+          "Strong product intuition and a curious mind that constantly seeks to improve the user experience.",
+          "The instinct to iterate rapidly and thrive in a high-velocity, research-driven environment.",
+          "A zero-ego approach to problem solving and a passion for building things that matter."
         ]
       },
       {
         "title": "InquisLab is for you if",
         "bullets": [
-          "You will own the production codebase of a platform targeting the most critical physical infrastructure on earth.",
-          "You will be a foundational member of the product team, defining our engineering culture and execution velocity.",
-          "Significant long-term equity and uncapped growth trajectory as we establish our dominant position in the market."
+          "You want to build the front-line interfaces for the world's most critical physical infrastructure.",
+          "You are a foundational member of a lab that values both technical excellence and creative execution.",
+          "You are curious about the intersection of high-end design and heavy industrial technology."
         ]
       }
     ],
     "applyEmail": "careers@inquislab.com",
     "applySubject": "Product Engineer — Application",
-    "applyBody": "Please share:\\n\\n1. Technical links you're proud of (GitHub, personal website, or a deployed project).\\n2. A brief overview of an end-to-end product feature you have shipped.\\n3. Why you are interested in InquisLab.\\n\\nNo cover letters required."
+    "applyBody": "Please share:\n\n1. Technical links you're proud of (GitHub, personal website, or a deployed project).\n2. A brief overview of an end-to-end product feature you have shipped.\n3. Why you are interested in InquisLab.\n\nNo cover letters required."
   },
   {
     "id": "marketing-ground",
-    "team": "Team 02 · Marketing & Growth",
-    "title": "Growth Marketing Lead",
+    "team": "Team 02 · Growth & Storytelling",
+    "title": "Growth Lead",
     "location": "Remote · India",
     "type": "Full-time",
     "tags": [
       "Work with founder"
     ],
-    "summary": "We are introducing transformative AI to a massive, traditional physical industry. As the Growth Marketing Lead, you will orchestrate our entire go-to-market engine. You will extract deep insights directly from plant operators, build targeted distribution channels, and scale our initial customer base from absolute zero into a predictable growth curve.",
+    "summary": "We are an AI research lab introducing a new category of technology to traditional industries. As the Growth Lead, you will orchestrate our engine for impact. You will extract deep insights from the vertical world, build targeted distribution channels, and scale our initial presence from absolute zero.",
     "sections": [
       {
         "title": "Expect to focus on",
         "bullets": [
-          "Extract and document deep pain points directly from plant operators, reliability managers, and industrial decision makers.",
-          "Architect extremely precise B2B target lists (Indian refineries, chemical plants, manufacturing DCs).",
-          "Write high-converting, deeply-researched hooks and campaign scripts aimed strictly at enterprise buyers.",
-          "Translate complex technical engineering advancements into highly accessible customer-facing product positioning.",
-          "Own the CRM lifecycle, scaling intelligent cold outreach, tracking engagement, and coordinating demos."
+          "Extract and document deep insights directly from the industrial vertical.",
+          "Architect precise growth strategies for reaching decision-makers in heavy industry.",
+          "Write deeply-researched, high-signal narratives that communicate our research and its impact.",
+          "Translate complex engineering advancements into highly accessible and compelling positioning.",
+          "Own the lifecycle of our growth experiments, from initial hypothesis to scaled execution."
         ]
       },
       {
         "title": "You may be a good fit if you",
         "bullets": [
-          "You are an exceptional, concise writer who inherently understands how to drive an audience to action.",
-          "Deep natural curiosity for complex industrial systems, B2B sales cycles, and physical engineering operations.",
-          "High proficiency in cold outreach, CRM management, and scaling outbound campaigns.",
-          "An extremely high threshold for rejection and a purely analytical approach to iterating on messaging.",
-          "Bonus: Prior startup GTM experience or B2B enterprise SaaS marketing."
+          "You are an exceptional, concise writer who can tell a story that resonates with technical and industrial audiences.",
+          "Deep natural curiosity for complex industrial systems and the people who run them.",
+          "High proficiency in growth experimentation and the ability to scale what works.",
+          "An analytical approach to iterating on messaging and a high threshold for ambiguity.",
+          "A passion for category creation and a drive to see curiosity reshape industries."
         ]
       },
       {
         "title": "InquisLab is for you if",
         "bullets": [
-          "Supreme autonomy to build the go-to-market engine of a technical startup from scratch.",
-          "Close integration with product engineering, giving you a deep understanding of AI-driven industrial systems.",
-          "The opportunity to scale the growth team and step into significant leadership as the company accelerates."
+          "You want to build the growth engine of a technical lab from the ground up.",
+          "You are curious about how to bring cutting-edge AI research to the world's most traditional categories.",
+          "You want to work at the intersection of deep tech and human storytelling."
         ]
       }
     ],
     "applyEmail": "careers@inquislab.com",
-    "applySubject": "Growth Marketing Lead — Application",
-    "applyBody": "Please share:\\n\\n1. A portfolio piece, writing sample, or metric-backed summary of a campaign you led.\\n2. What excites you about selling software to industrial categories.\\n3. Why you are interested in InquisLab.\\n\\nNo cover letters required."
+    "applySubject": "Growth Lead — Application",
+    "applyBody": "Please share:\n\n1. A portfolio piece, writing sample, or metric-backed summary of a project you led.\n2. What excites you about the intersection of curiosity and industrial technology.\n3. Why you are interested in InquisLab.\n\nNo cover letters required."
   },
   {
     "id": "marketing-video",
-    "team": "Team 02 · Marketing & Growth",
+    "team": "Team 02 · Growth & Storytelling",
     "title": "Creative Director / Video",
     "location": "Remote · India",
     "type": "Full-time",
     "tags": [
       "Work with founder"
     ],
-    "summary": "To modernize a physical industry, you must tell a visually compelling story. As the Creative Director of Video, you will own the entire visual and narrative output of InquisLab. You will distill massive industrial engineering problems into highly engaging, high-fidelity tech overviews and viral campaigns that command the attention of industrial leaders.",
+    "summary": "To reshape an industry, you must show them a new world. As the Creative Director of Video, you will own the visual and narrative output of our lab. You will distill deep technical research into compelling visual stories that command attention and spark curiosity.",
     "sections": [
       {
         "title": "Expect to focus on",
         "bullets": [
-          "Direct, edit, and produce high-impact 30–90 second videos that visually translate our software's industrial impact.",
-          "Leverage modern AI tooling (Runway, ElevenLabs, Descript, etc.) to maintain a high-frequency production cadence without a full crew.",
-          "Own and scale all primary social distribution channels (LinkedIn, Twitter/X, YouTube), driving consistent impressions.",
-          "A/B test thumbnails, hooks, and pacing to reverse-engineer viral distribution mechanisms in B2B environments.",
-          "Collaborate with engineering to capture product feature drops in highly aesthetic, dynamic formats."
+          "Direct and produce high-impact visual stories that translate our research's industrial impact.",
+          "Leverage modern AI tooling to maintain a high-fidelity, research-driven production cadence.",
+          "Own and scale our primary visual distribution channels, driving a consistent narrative.",
+          "Experiment with visual formats to find the most effective ways to communicate complex ideas.",
+          "Collaborate with researchers to capture the essence of our work in aesthetic, dynamic formats."
         ]
       },
       {
         "title": "You may be a good fit if you",
         "bullets": [
-          "A demonstrable portfolio of high-performing video content built for modern platforms (YouTube, Reels, TikTok).",
-          "Expertise with both traditional editing suites (Premiere/FCP) and cutting-edge generative AI production tools.",
-          "An exceptional intuition for visual pacing, storytelling, and what successfully interrupts a user's scroll.",
-          "The ability to aggressively ship functional v1s and iterate based on analytical feedback.",
-          "Bonus: Experience executing visual campaigns for technical products or SaaS platforms."
+          "A demonstrable portfolio of high-performing visual content that tells a complex story simply.",
+          "Expertise with both traditional production and cutting-edge generative AI tools.",
+          "An exceptional intuition for visual storytelling and a deep sense of aesthetic curiosity.",
+          "The ability to aggressively ship functional v1s and iterate based on the narrative needs of the lab.",
+          "A passion for using video as a tool to explore and communicate new frontiers."
         ]
       },
       {
         "title": "InquisLab is for you if",
         "bullets": [
-          "Total creative ownership over the brand narrative and visual direction of an emergent AI company.",
-          "Exposure at the frontier of industrial automation—framing systems that nobody else is currently documenting.",
-          "Massive career upside as you build out and lead the internal creative studio of a scaling industry leader."
+          "You want total creative ownership over the visual brand of an emergent AI research lab.",
+          "You are curious about framing systems and technologies that are currently undocumented.",
+          "You want to build the internal creative studio of a scaling industry leader."
         ]
       }
     ],
     "applyEmail": "careers@inquislab.com",
     "applySubject": "Creative Director / Video — Application",
-    "applyBody": "Please share:\\n\\n1. Direct links to the highest-performing or best-produced videos you have created.\\n2. A short breakdown of your video production tooling stack.\\n3. Why you are interested in InquisLab.\\n\\nNo cover letters required."
+    "applyBody": "Please share:\n\n1. Direct links to the highest-performing or best-produced videos you have created.\n2. A short breakdown of your visual production tooling stack.\n3. Why you are interested in InquisLab.\n\nNo cover letters required."
   }
 ]

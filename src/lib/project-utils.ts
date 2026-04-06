@@ -54,7 +54,7 @@ export function buildProjectFromForm(formData: FormData): Project {
     rolesSub: formData.get('rolesSub')?.toString() || '',
     ctaPre: formData.get('ctaPre')?.toString() || 'How to apply',
     ctaTitle: formData.get('ctaTitle')?.toString() || 'Send us something real.',
-    ctaEmail: formData.get('ctaEmail')?.toString() || 'hello@inquislab.com',
+    ctaEmail: formData.get('ctaEmail')?.toString() || 'careers@inquislab.com',
     ctaNote: formData.get('ctaNote')?.toString() || 'Email us directly.\nNo cover letters required.',
     targetTeams: formData.get('targetTeams')?.toString().split('\n').map(t => t.trim()).filter(Boolean) || []
   };

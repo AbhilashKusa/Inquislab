@@ -4,25 +4,25 @@
     "status": "Hiring",
     "projectNumber": "PROJECT 01",
     "title": "Industrial Automation",
-    "summary": "AI Software for the Industries That Build Everything Else. We're rebuilding legacy control systems for refineries and chemical plants.",
-    "heroTag": "Project 01 · Industrial Automation",
-    "heroH1": "AI Software for the<br/>Industries That Build<br/><em>Everything Else.</em>",
-    "heroSub": "Refineries, chemical plants, distribution centers, factories — the physical systems the world depends on run on software that's decades old. We're changing that.",
+    "summary": "An AI research lab working vertically on industrial technology. We are deeply curious to see what curiosity does to humanity.",
+    "heroTag": "Project 01 · Research Lab",
+    "heroH1": "Vertical Industrial<br/><em>Automation.</em>",
+    "heroSub": "We are building the vertical layer for industrial autonomy. A research lab driven by the curiosity of what is possible when intelligence meets the physical world.",
     "stripItems": [
       {
         "num": "01",
-        "title": "Alarm Overload",
-        "desc": "Operators drown in thousands of alarms. Critical signals get lost in the noise. We fix this."
+        "title": "Vertical Focus",
+        "desc": "Deeply integrated AI research focused specifically on the complexities of industrial systems."
       },
       {
         "num": "02",
-        "title": "Rationalization",
-        "desc": "Months of spreadsheet-based alarm review eliminated through AI-driven analysis."
+        "title": "Autonomy",
+        "desc": "Moving beyond simple control to true vertical autonomy for heavy industrial operations."
       },
       {
         "num": "03",
-        "title": "Intelligence",
-        "desc": "Pattern recognition and predictive insights for heavy industrial operations."
+        "title": "Curiosity",
+        "desc": "Driven by the fundamental question of how intelligent systems can reshape our physical reality."
       }
     ],
     "rolesTitle": "Open Roles",

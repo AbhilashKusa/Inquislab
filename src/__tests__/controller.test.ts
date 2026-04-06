@@ -1,17 +1,6 @@
-import { validatePassword, buildJobFromForm, PASSWORD } from '../lib/job-utils';
+import { validatePassword, getPassword, buildJobFromForm } from '../lib/job-utils';
 
 describe('Controller Authentication', () => {
-  describe('PASSWORD constant', () => {
-    it('should be defined', () => {
-      expect(PASSWORD).toBeDefined();
-    });
-
-    it('should be a non-empty string', () => {
-      expect(typeof PASSWORD).toBe('string');
-      expect(PASSWORD.length).toBeGreaterThan(0);
-    });
-  });
-
   describe('validatePassword', () => {
     it('should throw error for invalid password', () => {
       expect(() => validatePassword('wrongpassword')).toThrow('Invalid controller password.');
@@ -26,7 +15,7 @@ describe('Controller Authentication', () => {
     });
 
     it('should not throw for correct password', () => {
-      expect(() => validatePassword(PASSWORD)).not.toThrow();
+      expect(() => validatePassword(getPassword())).not.toThrow();
     });
 
     it('should not throw for password matching the constant', () => {

@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { publishJob, updateJob, deleteJob, getJobs, authenticate, publishProject, updateProject, deleteProject, getProjects } from './actions';
 import { Job } from '@/lib/job-utils';
 import { Project } from '@/lib/project-utils';
+import styles from './admin.module.css';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import JobForm from '@/components/admin/JobForm';
+import ProjectForm from '@/components/admin/ProjectForm';
 
 type Tab = 'jobs' | 'projects';
 type View = 'dashboard' | 'create_job' | 'edit_job' | 'create_project' | 'edit_project';
@@ -67,16 +71,16 @@ export default function AdminController() {
   // ─── Gate ───
   if (!authed) {
     return (
-      <div className="admin-login">
-        <div className="login-box">
-          <div className="login-tag">CONTROLLER</div>
+      <div className={styles.adminLogin}>
+        <div className={styles.loginBox}>
+          <div className={styles.loginTag}>CONTROLLER</div>
           <h1>Admin Access</h1>
           <form onSubmit={handleLogin}>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter controller password" autoFocus />
-            <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+            <button type="submit" disabled={loading} className={`btn btn-primary ${styles.w100} ${styles.jcCenter}`}>
               {loading ? 'Unlocking...' : 'Unlock'}
             </button>
-            {status && <div className="status-error">{status}</div>}
+            {status && <div className={styles.statusError}>{status}</div>}
           </form>
         </div>
       </div>
@@ -84,7 +88,7 @@ export default function AdminController() {
   }
 
   if (initialLoading) {
-    return <div className="admin-page"><div className="admin-header"><h1>Loading...</h1></div></div>;
+    return <div className={styles.adminPage}><div className={styles.adminHeader}><h1>Loading...</h1></div></div>;
   }
 
   // ─── Job Handlers ───
@@ -159,225 +163,106 @@ export default function AdminController() {
     setLoading(false);
   };
 
-  // ─── Forms ───
-  const renderJobForm = (mode: 'create_job' | 'edit_job') => {
-    const j = mode === 'edit_job' ? editJob : null;
-
-    return (
-      <form onSubmit={(e) => handleJobSubmit(e, mode)} className="admin-form">
-        <div className="form-header">
-          <button type="button" onClick={() => { setView('dashboard'); setEditJob(null); setStatus(''); }} className="back-btn">← Back</button>
-          <h2>{mode === 'create_job' ? 'Create new role' : `Edit: ${j?.title}`}</h2>
-        </div>
-        {mode === 'edit_job' && <input type="hidden" name="id" value={j?.id} />}
-
-        <div className="config-card">
-          <div className="config-header">1. Core Metadata</div>
-          <div className="form-group"><label>Job Title</label><input type="text" name="title" required defaultValue={j?.title || ''} /></div>
-          <div className="form-group"><label>Summary</label><textarea name="summary" rows={3} required defaultValue={j?.summary || ''} placeholder="Brief role overview..." /></div>
-        </div>
-
-        <div className="config-card">
-          <div className="config-header">2. Taxonomy & Routing</div>
-          <div className="form-row">
-            <div className="form-group"><label>Team</label><select name="team" defaultValue={j?.team || 'Team 01 · Product Engineering'}><option>Team 01 · Product Engineering</option><option>Team 02 · Marketing &amp; Growth</option></select></div>
-            <div className="form-group"><label>Location</label><input type="text" name="location" defaultValue={j?.location || 'Remote · India'} /></div>
-          </div>
-          <div className="form-row">
-            <div className="form-group"><label>Type</label><input type="text" name="type" defaultValue={j?.type || 'Full-time'} /></div>
-            <div className="form-group"><label>Tag</label><input type="text" name="tag" defaultValue={j?.tags?.[0] || 'Work with founder'} /></div>
-          </div>
-        </div>
-
-        <div className="config-card">
-          <div className="config-header">3. Content Sections</div>
-          <div className="config-subtext">Leave sections blank to omit them from the job post.</div>
-          {[1, 2, 3, 4].map(i => {
-            const section = j?.sections?.[i - 1];
-            const defaultTitle = i === 1 ? 'Expect to focus on' : i === 2 ? 'You may be a good fit if you' : i === 3 ? 'InquisLab is for you if' : '';
-            return (
-              <div className="section-block" key={i}>
-                <div className="form-group">
-                  <label>Section {i} Title</label>
-                  <input type="text" name={`secTitle${i}`} defaultValue={section?.title || (mode === 'create_job' ? defaultTitle : '')} placeholder="e.g. Responsibilities" />
-                </div>
-                <div className="form-group" style={{ marginBottom: 0 }}>
-                  <label>Section {i} Bullets <span className="label-hint">(one bullet per line)</span></label>
-                  <textarea name={`secBullets${i}`} rows={i === 1 ? 5 : i === 2 ? 4 : 3} defaultValue={section?.bullets?.join('\n') || ''} placeholder="Add specific details..." />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '24px', padding: '16px' }}>
-          {loading ? 'Saving...' : mode === 'create_job' ? 'Publish Job' : 'Update Job'}
-        </button>
-        {status && <div className={`status-msg ${status.startsWith('✓') ? 'success' : 'error'}`}>{status}</div>}
-      </form>
-    );
-  };
-
-  const renderProjectForm = (mode: 'create_project' | 'edit_project') => {
-    const p = mode === 'edit_project' ? editProject : null;
-
-    return (
-      <form onSubmit={(e) => handleProjectSubmit(e, mode)} className="admin-form">
-        <div className="form-header">
-          <button type="button" onClick={() => { setView('dashboard'); setEditProject(null); setStatus(''); }} className="back-btn">← Back</button>
-          <h2>{mode === 'create_project' ? 'Create new project' : `Edit: ${p?.title}`}</h2>
-        </div>
-        {mode === 'edit_project' && <input type="hidden" name="id" value={p?.id} />}
-
-        <div className="form-divider">Basic Info (Careers List)</div>
-        <div className="form-row">
-          <div className="form-group"><label>Project Title</label><input type="text" name="title" required defaultValue={p?.title || ''} /></div>
-          <div className="form-group"><label>Project Number</label><input type="text" name="projectNumber" defaultValue={p?.projectNumber || 'PROJECT 01'} /></div>
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>Status Tag</label><input type="text" name="status" defaultValue={p?.status || 'Hiring'} /></div>
-        </div>
-        <div className="form-group"><label>Project Summary</label><textarea name="summary" rows={3} required defaultValue={p?.summary || ''} /></div>
-
-        <div className="form-divider">Detail Page: Hero</div>
-        <div className="form-group"><label>Hero Tag</label><input type="text" name="heroTag" defaultValue={p?.heroTag || ''} /></div>
-        <div className="form-group"><label>Hero Title (HTML ok)</label><textarea name="heroH1" rows={3} defaultValue={p?.heroH1 || ''} /></div>
-        <div className="form-group"><label>Hero Subtitle</label><textarea name="heroSub" rows={3} defaultValue={p?.heroSub || ''} /></div>
-
-        <div className="form-divider">Detail Page: Problem Strip Items</div>
-        {[1, 2, 3].map(i => {
-          const item = p?.stripItems?.[i - 1];
-          return (
-            <div className="form-row" key={i}>
-              <div className="form-group" style={{ flex: 1 }}><label>Strip {i} Title</label><input type="text" name={`stripTitle${i}`} defaultValue={item?.title || ''} /></div>
-              <div className="form-group" style={{ flex: 2 }}><label>Strip {i} Description</label><input type="text" name={`stripDesc${i}`} defaultValue={item?.desc || ''} /></div>
-            </div>
-          );
-        })}
-
-        <div className="form-divider">Detail Page: Roles Section & CTA</div>
-        <div className="form-group">
-          <label>Target Teams <span className="label-hint">(One per line. Leave empty to display jobs from ALL teams)</span></label>
-          <textarea name="targetTeams" rows={3} defaultValue={p?.targetTeams?.join('\n') || ''} placeholder="Team 01 · Product Engineering" />
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>Roles Title</label><input type="text" name="rolesTitle" defaultValue={p?.rolesTitle || 'Open Roles'} /></div>
-          <div className="form-group"><label>Roles Subtitle</label><input type="text" name="rolesSub" defaultValue={p?.rolesSub || ''} /></div>
-        </div>
-        <div className="form-row">
-          <div className="form-group"><label>CTA Pre-title</label><input type="text" name="ctaPre" defaultValue={p?.ctaPre || 'How to apply'} /></div>
-          <div className="form-group"><label>CTA Email</label><input type="text" name="ctaEmail" defaultValue={p?.ctaEmail || 'careers@inquislab.com'} /></div>
-        </div>
-        <div className="form-group"><label>CTA Title (HTML ok)</label><input type="text" name="ctaTitle" defaultValue={p?.ctaTitle || ''} /></div>
-        <div className="form-group"><label>CTA Note (HTML ok)</label><textarea name="ctaNote" rows={3} defaultValue={p?.ctaNote || ''} /></div>
-
-        <button type="submit" disabled={loading} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-          {loading ? 'Saving...' : mode === 'create_project' ? 'Publish Project' : 'Update Project'}
-        </button>
-        {status && <div className={`status-msg ${status.startsWith('✓') ? 'success' : 'error'}`}>{status}</div>}
-      </form>
-    );
-  };
-
-  // ─── UI ───
   return (
-    <div className="admin-page">
-      {view === 'dashboard' && (
-        <>
-          <div className="admin-header">
-            <div>
-              <div className="admin-tag">CONTROLLER</div>
-              <h1>{activeTab === 'jobs' ? 'Jobs CRM' : 'Projects CRM'}</h1>
-              <p>{activeTab === 'jobs' ? jobs.length : projects.length} {activeTab === 'jobs' ? 'roles' : 'projects'} published</p>
+    <ErrorBoundary fallback={<h2>Something went wrong. Please refresh.</h2>}>
+      <div className={styles.adminPage}>
+        {view === 'dashboard' && (
+          <>
+            <div className={styles.adminHeader}>
+              <div>
+                <div className={styles.adminTag}>CONTROLLER</div>
+                <h1>{activeTab === 'jobs' ? 'Jobs CRM' : 'Projects CRM'}</h1>
+                <p>{activeTab === 'jobs' ? jobs.length : projects.length} {activeTab === 'jobs' ? 'roles' : 'projects'} published</p>
+              </div>
+              <div className={`${styles.dFlex} ${styles.gap12}`}>
+                <button 
+                  onClick={() => { setView(activeTab === 'jobs' ? 'create_job' : 'create_project'); setStatus(''); }} 
+                  className="btn btn-primary"
+                >
+                  + New {activeTab === 'jobs' ? 'Role' : 'Project'}
+                </button>
+                <button onClick={handleLogout} className="btn btn-outline">Logout</button>
+              </div>
             </div>
-            <div style={{ display: 'flex', gap: '12px' }}>
+
+            <div className={styles.adminTabs}>
               <button 
-                onClick={() => { setView(activeTab === 'jobs' ? 'create_job' : 'create_project'); setStatus(''); }} 
-                className="btn btn-primary"
-              >
-                + New {activeTab === 'jobs' ? 'Role' : 'Project'}
-              </button>
-              <button onClick={handleLogout} className="btn btn-outline">Logout</button>
+                className={`${styles.tabBtn} ${activeTab === 'jobs' ? styles.active : ''}`}
+                onClick={() => setActiveTab('jobs')}
+              >Jobs</button>
+              <button 
+                className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.active : ''}`}
+                onClick={() => setActiveTab('projects')}
+              >Projects</button>
             </div>
-          </div>
 
-          <div className="admin-tabs" style={{ display: 'flex', gap: '24px', marginBottom: '32px', borderBottom: '1px solid var(--rule)' }}>
-            <button 
-              style={{ background: 'transparent', border: 'none', color: activeTab === 'jobs' ? 'var(--fg)' : 'var(--fg-dim)', paddingBottom: '12px', borderBottom: activeTab === 'jobs' ? '2px solid var(--accent)' : '2px solid transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
-              onClick={() => setActiveTab('jobs')}
-            >Jobs</button>
-            <button 
-              style={{ background: 'transparent', border: 'none', color: activeTab === 'projects' ? 'var(--fg)' : 'var(--fg-dim)', paddingBottom: '12px', borderBottom: activeTab === 'projects' ? '2px solid var(--accent)' : '2px solid transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
-              onClick={() => setActiveTab('projects')}
-            >Projects</button>
-          </div>
+            {status && <div className={`${styles.statusMsg} ${status.startsWith('✓') ? styles.success : styles.error} ${styles.mb24}`}>{status}</div>}
 
-          {status && <div className={`status-msg ${status.startsWith('✓') ? 'success' : 'error'}`} style={{ marginBottom: '24px' }}>{status}</div>}
-
-          {activeTab === 'jobs' ? (
-            <div className="jobs-list">
-              {jobs.map(job => (
-                <div key={job.id} className="job-row">
-                  <div className="job-row-info">
-                    <div className="job-row-title">{job.title}</div>
-                    <div className="job-row-meta">
-                      <span>{job.team}</span>
-                      <span>·</span>
-                      <span>{job.location}</span>
+            {activeTab === 'jobs' ? (
+              <div className={styles.jobsList}>
+                {jobs.map(job => (
+                  <div key={job.id} className={styles.jobRow}>
+                    <div className={styles.jobRowInfo}>
+                      <div className={styles.jobRowTitle}>{job.title}</div>
+                      <div className={styles.jobRowMeta}>
+                        <span>{job.team}</span>
+                        <span>·</span>
+                        <span>{job.location}</span>
+                      </div>
+                    </div>
+                    <div className={styles.jobRowActions}>
+                      <button onClick={() => { setEditJob(job); setView('edit_job'); setStatus(''); }} className={`${styles.actionBtn} ${styles.edit}`}>Edit</button>
+                      {deleteConfirm === job.id ? (
+                        <div className={styles.confirmDelete}>
+                          <span>Delete?</span>
+                          <button onClick={() => handleJobDelete(job.id)} className={`${styles.actionBtn} ${styles.danger}`} disabled={loading}>Yes</button>
+                          <button onClick={() => setDeleteConfirm(null)} className={styles.actionBtn}>No</button>
+                        </div>
+                      ) : (
+                        <button onClick={() => setDeleteConfirm(job.id)} className={`${styles.actionBtn} ${styles.delete}`}>Delete</button>
+                      )}
+                      <a href={`/careers/${job.id}`} target="_blank" className={`${styles.actionBtn} ${styles.view}`}>View ↗</a>
                     </div>
                   </div>
-                  <div className="job-row-actions">
-                    <button onClick={() => { setEditJob(job); setView('edit_job'); setStatus(''); }} className="action-btn edit">Edit</button>
-                    {deleteConfirm === job.id ? (
-                      <div className="confirm-delete">
-                        <span>Delete?</span>
-                        <button onClick={() => handleJobDelete(job.id)} className="action-btn danger" disabled={loading}>Yes</button>
-                        <button onClick={() => setDeleteConfirm(null)} className="action-btn">No</button>
+                ))}
+              </div>
+            ) : (
+              <div className={styles.jobsList}>
+                {projects.map(proj => (
+                  <div key={proj.id} className={styles.jobRow}>
+                    <div className={styles.jobRowInfo}>
+                      <div className={styles.jobRowTitle}>{proj.title}</div>
+                      <div className={styles.jobRowMeta}>
+                        <span>{proj.projectNumber}</span>
+                        <span>·</span>
+                        <span>{proj.status}</span>
                       </div>
-                    ) : (
-                      <button onClick={() => setDeleteConfirm(job.id)} className="action-btn delete">Delete</button>
-                    )}
-                    <a href={`/careers/${job.id}`} target="_blank" className="action-btn view">View ↗</a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="jobs-list">
-              {projects.map(proj => (
-                <div key={proj.id} className="job-row">
-                  <div className="job-row-info">
-                    <div className="job-row-title">{proj.title}</div>
-                    <div className="job-row-meta">
-                      <span>{proj.projectNumber}</span>
-                      <span>·</span>
-                      <span>{proj.status}</span>
+                    </div>
+                    <div className={styles.jobRowActions}>
+                      <button onClick={() => { setEditProject(proj); setView('edit_project'); setStatus(''); }} className={`${styles.actionBtn} ${styles.edit}`}>Edit</button>
+                      {deleteConfirm === proj.id ? (
+                        <div className={styles.confirmDelete}>
+                          <span>Delete?</span>
+                          <button onClick={() => handleProjectDelete(proj.id)} className={`${styles.actionBtn} ${styles.danger}`} disabled={loading}>Yes</button>
+                          <button onClick={() => setDeleteConfirm(null)} className={styles.actionBtn}>No</button>
+                        </div>
+                      ) : (
+                        <button onClick={() => setDeleteConfirm(proj.id)} className={`${styles.actionBtn} ${styles.delete}`}>Delete</button>
+                      )}
+                      <a href={`/careers/${proj.id}`} target="_blank" className={`${styles.actionBtn} ${styles.view}`}>View ↗</a>
                     </div>
                   </div>
-                  <div className="job-row-actions">
-                    <button onClick={() => { setEditProject(proj); setView('edit_project'); setStatus(''); }} className="action-btn edit">Edit</button>
-                    {deleteConfirm === proj.id ? (
-                      <div className="confirm-delete">
-                        <span>Delete?</span>
-                        <button onClick={() => handleProjectDelete(proj.id)} className="action-btn danger" disabled={loading}>Yes</button>
-                        <button onClick={() => setDeleteConfirm(null)} className="action-btn">No</button>
-                      </div>
-                    ) : (
-                      <button onClick={() => setDeleteConfirm(proj.id)} className="action-btn delete">Delete</button>
-                    )}
-                    <a href={`/careers/${proj.id}`} target="_blank" className="action-btn view">View ↗</a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </>
-      )}
+                ))}
+              </div>
+            )}
+          </>
+        )}
 
-      {view === 'create_job' && renderJobForm('create_job')}
-      {view === 'edit_job' && renderJobForm('edit_job')}
-      {view === 'create_project' && renderProjectForm('create_project')}
-      {view === 'edit_project' && renderProjectForm('edit_project')}
-    </div>
+        {view === 'create_job' && <JobForm mode="create_job" handleJobSubmit={handleJobSubmit} setView={setView} setEditJob={setEditJob} setStatus={setStatus} editJob={editJob} loading={loading} status={status} />}
+        {view === 'edit_job' && <JobForm mode="edit_job" handleJobSubmit={handleJobSubmit} setView={setView} setEditJob={setEditJob} setStatus={setStatus} editJob={editJob} loading={loading} status={status} />}
+        {view === 'create_project' && <ProjectForm mode="create_project" handleProjectSubmit={handleProjectSubmit} setView={setView} setEditProject={setEditProject} setStatus={setStatus} editProject={editProject} loading={loading} status={status} />}
+        {view === 'edit_project' && <ProjectForm mode="edit_project" handleProjectSubmit={handleProjectSubmit} setView={setView} setEditProject={setEditProject} setStatus={setStatus} editProject={editProject} loading={loading} status={status} />}
+      </div>
+    </ErrorBoundary>
   );
 }

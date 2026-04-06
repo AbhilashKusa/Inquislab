@@ -2,26 +2,24 @@ import { render, screen } from '@testing-library/react';
 import HomePage from '../app/page';
 
 describe('HomePage', () => {
-  it('renders the main heading "Building something new"', () => {
+  it('renders the lab name', () => {
     render(<HomePage />);
-    expect(screen.getByText(/building/i)).toBeInTheDocument();
-    expect(screen.getByText(/something new/i)).toBeInTheDocument();
+    expect(screen.getByText('InquisLabs Research')).toBeInTheDocument();
   });
 
-  it('renders the "COMING SOON" status indicator', () => {
+  it('renders the core question', () => {
     render(<HomePage />);
-    expect(screen.getByText('COMING SOON')).toBeInTheDocument();
+    expect(screen.getByText('What does curiosity do to humanity?')).toBeInTheDocument();
   });
 
-  it('renders the green dot indicator', () => {
+  it('renders the response line', () => {
     render(<HomePage />);
-    const dot = document.querySelector('.dot');
-    expect(dot).toBeInTheDocument();
+    expect(screen.getByText('It builds, questions, and redefines what’s possible.')).toBeInTheDocument();
   });
 
-  it('does not display any description text', () => {
+  it('renders the philosophy', () => {
     render(<HomePage />);
-    expect(screen.queryByText(/refineries/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/chemical plants/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/A relentless search for what/i)).toBeInTheDocument();
+    expect(screen.getByText('matters')).toBeInTheDocument();
   });
 });

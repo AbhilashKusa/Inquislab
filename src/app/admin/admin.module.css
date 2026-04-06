@@ -1,0 +1,357 @@
+.adminLogin { 
+  min-height: 80vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 120px 24px 80px; 
+}
+.loginBox { 
+  max-width: 400px; 
+  width: 100%; 
+}
+.loginTag { 
+  font-size: 11px; 
+  font-weight: 500; 
+  letter-spacing: .2em; 
+  text-transform: uppercase; 
+  color: var(--accent); 
+  margin-bottom: 12px; 
+}
+.loginBox h1 { 
+  font-size: 32px; 
+  font-weight: 600; 
+  letter-spacing: -.03em; 
+  margin-bottom: 32px; 
+}
+.loginBox input { 
+  width: 100%; 
+  padding: 14px; 
+  background: #0a0a0a; 
+  border: 1px solid var(--rule); 
+  color: var(--fg); 
+  border-radius: 6px; 
+  font-family: inherit; 
+  font-size: 14px; 
+  margin-bottom: 16px; 
+}
+.loginBox input:focus { 
+  outline: none; 
+  border-color: var(--accent); 
+}
+.statusError { 
+  margin-top: 16px; 
+  color: #e55; 
+  font-size: 13px; 
+  text-align: center; 
+}
+
+.adminPage { 
+  max-width: 900px; 
+  margin: 0 auto; 
+  padding: 120px 24px 80px; 
+}
+
+.adminHeader { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin-bottom: 40px; 
+  flex-wrap: wrap; 
+  gap: 16px; 
+}
+.adminTag { 
+  font-size: 11px; 
+  font-weight: 500; 
+  letter-spacing: .2em; 
+  text-transform: uppercase; 
+  color: var(--accent); 
+  margin-bottom: 8px; 
+}
+.adminHeader h1 { 
+  font-size: 32px; 
+  font-weight: 600; 
+  letter-spacing: -.03em; 
+  margin-bottom: 4px; 
+}
+.adminHeader p { 
+  font-size: 14px; 
+  color: var(--fg-ghost); 
+}
+
+.jobsList { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2px; 
+}
+.jobRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: all .2s;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.jobRow:hover { 
+  background: rgba(255,255,255,.04); 
+  border-color: var(--rule-hover); 
+}
+.jobRowTitle { 
+  font-size: 16px; 
+  font-weight: 500; 
+  margin-bottom: 4px; 
+}
+.jobRowMeta { 
+  font-size: 12px; 
+  color: var(--fg-ghost); 
+  display: flex; 
+  gap: 8px; 
+  flex-wrap: wrap; 
+}
+.jobRowActions { 
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+}
+
+.actionBtn {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--fg-dim);
+  cursor: pointer;
+  transition: all .2s;
+}
+.actionBtn:hover { 
+  border-color: var(--rule-hover); 
+  color: var(--fg); 
+}
+.actionBtn.edit:hover { 
+  border-color: var(--accent); 
+  color: var(--accent); 
+}
+.actionBtn.delete:hover, .actionBtn.danger { 
+  border-color: #e55; 
+  color: #e55; 
+}
+.actionBtn.danger:hover { 
+  background: #e55; 
+  color: #fff; 
+}
+.actionBtn.view { 
+  color: var(--fg-ghost); 
+}
+.actionBtn.view:hover { 
+  color: var(--accent); 
+  border-color: var(--accent); 
+}
+
+.confirmDelete { 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  font-size: 12px; 
+  color: #e55; 
+}
+
+/* ─── Form ─── */
+.adminForm { 
+  max-width: 700px; 
+}
+.formHeader { 
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+  margin-bottom: 40px; 
+}
+.formHeader h2 { 
+  font-size: 24px; 
+  font-weight: 600; 
+  letter-spacing: -.02em; 
+}
+.backBtn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-family: inherit;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--fg-dim);
+  cursor: pointer;
+  transition: all .2s;
+}
+.backBtn:hover { 
+  border-color: var(--rule-hover); 
+  color: var(--fg); 
+}
+
+.formGroup { 
+  margin-bottom: 24px; 
+}
+.formRow { 
+  display: flex; 
+  gap: 16px; 
+}
+.formRow .formGroup { 
+  flex: 1; 
+}
+.label { 
+  display: block; 
+  font-size: 13px; 
+  color: var(--fg-ghost); 
+  margin-bottom: 8px; 
+  letter-spacing: .02em; 
+}
+.labelHint { 
+  color: var(--fg-ghost); 
+  font-size: 11px; 
+  opacity: .7; 
+}
+.input, .textarea, .select {
+  width: 100%;
+  padding: 14px;
+  background: #0a0a0a;
+  border: 1px solid var(--rule);
+  color: var(--fg);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color .3s;
+  line-height: 1.6;
+}
+.select { 
+  cursor: pointer; 
+}
+.input:focus, .textarea:focus, .select:focus { 
+  outline: none; 
+  border-color: var(--accent); 
+}
+
+.formDivider {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 20px 0;
+  margin-bottom: 8px;
+  border-top: 1px solid var(--rule);
+}
+
+.statusMsg {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+.statusMsg.success { 
+  background: rgba(34,197,94,.08); 
+  color: #22c55e; 
+  border: 1px solid rgba(34,197,94,.2); 
+}
+.statusMsg.error { 
+  background: rgba(239,68,68,.08); 
+  color: #ef4444; 
+  border: 1px solid rgba(239,68,68,.2); 
+}
+
+.adminTabs { 
+  display: flex; 
+  gap: 24px; 
+  margin-bottom: 32px; 
+  border-bottom: 1px solid var(--rule); 
+}
+.tabBtn {
+  background: transparent; 
+  border: none; 
+  padding-bottom: 12px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.tabBtn.active {
+  color: var(--fg);
+  border-bottom: 2px solid var(--accent);
+}
+.tabBtn:not(.active) {
+  color: var(--fg-dim);
+  border-bottom: 2px solid transparent;
+}
+
+.configCard {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+
+.configHeader {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.configSubtext {
+  font-size: 12px;
+  color: var(--fg-dim);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.sectionBlock {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: rgba(255,255,255,0.01);
+  border-radius: 6px;
+}
+
+.w100 {
+  width: 100%;
+}
+.jcCenter {
+  justify-content: center;
+}
+.mt24 {
+  margin-top: 24px;
+}
+.p16 {
+  padding: 16px;
+}
+.mb0 {
+  margin-bottom: 0;
+}
+.flex1 {
+  flex: 1;
+}
+.flex2 {
+  flex: 2;
+}
+.dFlex {
+  display: flex;
+}
+.gap12 {
+  gap: 12px;
+}
+.mb24 {
+  margin-bottom: 24px;
+}
+
+@media(max-width: 768px) {
+  .adminPage { padding: 100px 16px 60px; }
+  .formRow { flex-direction: column; gap: 0; }
+  .jobRow { flex-direction: column; align-items: flex-start; }
+  .jobRowActions { width: 100%; justify-content: flex-end; }
+}

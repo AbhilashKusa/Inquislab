@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Project } from '@/lib/project-utils';
 import { Job } from '@/lib/job-utils';
+import styles from './project-detail.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,15 +17,15 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero animations
-      gsap.from('.hero-tag', { y: 30, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' });
-      gsap.from('.hero-h1', { y: 50, opacity: 0, duration: 1, delay: 0.4, ease: 'power3.out' });
-      gsap.from('.hero-sub', { y: 40, opacity: 0, duration: 0.9, delay: 0.6, ease: 'power3.out' });
-      gsap.from('.hero-actions', { y: 30, opacity: 0, duration: 0.8, delay: 0.8, ease: 'power3.out' });
-      gsap.from('.hero-glow', { scale: 0.6, opacity: 0, duration: 2, delay: 0.3, ease: 'power2.out' });
+      gsap.from(`.${styles.heroTag}`, { y: 30, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' });
+      gsap.from(`.${styles.heroH1}`, { y: 50, opacity: 0, duration: 1, delay: 0.4, ease: 'power3.out' });
+      gsap.from(`.${styles.heroSub}`, { y: 40, opacity: 0, duration: 0.9, delay: 0.6, ease: 'power3.out' });
+      gsap.from(`.${styles.heroActions}`, { y: 30, opacity: 0, duration: 0.8, delay: 0.8, ease: 'power3.out' });
+      gsap.from(`.${styles.heroGlow}`, { scale: 0.6, opacity: 0, duration: 2, delay: 0.3, ease: 'power2.out' });
 
       // Strip cards - staggered scroll trigger
       if (stripRef.current) {
-        gsap.from('.strip-item', {
+        gsap.from(`.${styles.stripItem}`, {
           scrollTrigger: { trigger: stripRef.current, start: 'top 80%' },
           y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
         });
@@ -32,21 +33,21 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
 
       // Roles section - using fromTo with toggleActions for safety when section is already in view
       if (teamsRef.current) {
-        gsap.fromTo('.roles-header',
+        gsap.fromTo(`.${styles.rolesHeader}`,
           { y: 40, opacity: 0 },
           {
             scrollTrigger: { trigger: teamsRef.current, start: 'top 85%', toggleActions: 'play none none none' },
             y: 0, opacity: 1, duration: 0.8, ease: 'power3.out'
           }
         );
-        gsap.fromTo('.team-group',
+        gsap.fromTo(`.${styles.teamGroup}`,
           { y: 50, opacity: 0 },
           {
             scrollTrigger: { trigger: teamsRef.current, start: 'top 75%', toggleActions: 'play none none none' },
             y: 0, opacity: 1, duration: 0.7, stagger: 0.2, ease: 'power3.out'
           }
         );
-        gsap.fromTo('.role-card',
+        gsap.fromTo(`.${styles.roleCard}`,
           { x: -30, opacity: 0 },
           {
             scrollTrigger: { trigger: teamsRef.current, start: 'top 65%', toggleActions: 'play none none none' },
@@ -57,7 +58,7 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
 
       // CTA section
       if (ctaRef.current) {
-        gsap.from('.cta-content', {
+        gsap.from(`.${styles.ctaContent}`, {
           scrollTrigger: { trigger: ctaRef.current, start: 'top 80%' },
           y: 40, opacity: 0, duration: 0.9, ease: 'power3.out'
         });
@@ -66,7 +67,7 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
 
     // Safety: ensure roles are visible if ScrollTrigger already passed
     setTimeout(() => {
-      document.querySelectorAll('.roles-header, .team-group, .role-card').forEach(el => {
+      document.querySelectorAll(`.${styles.rolesHeader}, .${styles.teamGroup}, .${styles.roleCard}`).forEach(el => {
         const htmlEl = el as HTMLElement;
         if (parseFloat(getComputedStyle(htmlEl).opacity) < 0.1) {
           gsap.to(htmlEl, { opacity: 1, y: 0, x: 0, duration: 0.5 });
@@ -93,14 +94,14 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="hero">
-        <div className="hero-glow"></div>
-        <div className="hero-content">
-          <div className="hero-tag"><span className="pulse-dot"></span>{project.heroTag}</div>
-          <h1 className="hero-h1" dangerouslySetInnerHTML={{ __html: project.heroH1 }}></h1>
-          <p className="hero-sub">{project.heroSub}</p>
-          <div className="hero-actions">
-            <a href="#roles" className="btn btn-primary">See open roles <span className="arrow">↓</span></a>
+      <section className={styles.hero}>
+        <div className={styles.heroGlow}></div>
+        <div className={styles.heroContent}>
+          <div className={styles.heroTag}><span className={styles.pulseDot}></span>{project.heroTag}</div>
+          <h1 className={styles.heroH1} dangerouslySetInnerHTML={{ __html: project.heroH1 }}></h1>
+          <p className={styles.heroSub}>{project.heroSub}</p>
+          <div className={styles.heroActions}>
+            <a href="#roles" className="btn btn-primary">See open roles <span className={styles.arrow}>↓</span></a>
             <a href={`mailto:${project.ctaEmail}`} className="btn btn-outline">Get in touch</a>
           </div>
         </div>
@@ -108,11 +109,11 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
 
       {/* ─── PROBLEM STRIP ─── */}
       {project.stripItems && project.stripItems.length > 0 && (
-        <section className="strip" ref={stripRef}>
-          <div className="strip-inner">
+        <section className={styles.strip} ref={stripRef}>
+          <div className={styles.stripInner}>
             {project.stripItems.map((item, idx) => (
-              <div key={idx} className="strip-item">
-                <div className="strip-num">{item.num}</div>
+              <div key={idx} className={styles.stripItem}>
+                <div className={styles.stripNum}>{item.num}</div>
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
@@ -122,30 +123,30 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
       )}
 
       {/* ─── OPEN ROLES ─── */}
-      <section id="roles" className="roles-section" ref={teamsRef}>
-        <div className="section-container">
-          <div className="roles-header">
+      <section id="roles" className={styles.rolesSection} ref={teamsRef}>
+        <div className={styles.sectionContainer}>
+          <div className={styles.rolesHeader}>
             <h2>{project.rolesTitle}</h2>
             <p>{project.rolesSub}</p>
           </div>
 
           {teamKeys.map((team) => (
-            <div key={team} className="team-group">
-              <h3 className="team-group-name">{team.split('·')[1]?.trim() || team}</h3>
-              <div className="role-cards">
+            <div key={team} className={styles.teamGroup}>
+              <h3 className={styles.teamGroupName}>{team.split('·')[1]?.trim() || team}</h3>
+              <div className={styles.roleCards}>
                 {teams[team].map(job => (
-                  <Link key={job.id} href={`/careers/${job.id}`} className="role-card">
-                    <div className="role-info">
-                      <div className="role-title">{job.title}</div>
-                      <div className="role-meta">
+                  <Link key={job.id} href={`/careers/${job.id}`} className={styles.roleCard}>
+                    <div className={styles.roleInfo}>
+                      <div className={styles.roleTitle}>{job.title}</div>
+                      <div className={styles.roleMeta}>
                         <span>{job.location}</span>
-                        <span className="meta-dot"></span>
+                        <span className={styles.metaDot}></span>
                         <span>{job.type}</span>
-                        <span className="meta-dot"></span>
+                        <span className={styles.metaDot}></span>
                         <span>{job.tags[0]}</span>
                       </div>
                     </div>
-                    <div className="role-arrow">→</div>
+                    <div className={styles.roleArrow}>→</div>
                   </Link>
                 ))}
               </div>
@@ -155,12 +156,12 @@ export function ProjectDetailClient({ project, jobs }: { project: Project, jobs:
       </section>
 
       {/* ─── APPLY CTA ─── */}
-      <section className="cta" ref={ctaRef}>
-        <div className="cta-content">
-          <div className="cta-pre">{project.ctaPre}</div>
-          <h2 dangerouslySetInnerHTML={{ __html: project.ctaTitle }}></h2>
-          <a href={`mailto:${project.ctaEmail}`} className="cta-email">{project.ctaEmail}</a>
-          <div className="cta-note" dangerouslySetInnerHTML={{ __html: project.ctaNote }}></div>
+      <section className={styles.cta} ref={ctaRef}>
+        <div className={styles.ctaContent}>
+          <div className={styles.ctaPre}>{project.ctaPre}</div>
+          <h2 className={styles.ctaH2} dangerouslySetInnerHTML={{ __html: project.ctaTitle }}></h2>
+          <a href={`mailto:${project.ctaEmail}`} className={styles.ctaEmail}>{project.ctaEmail}</a>
+          <div className={styles.ctaNote} dangerouslySetInnerHTML={{ __html: project.ctaNote }}></div>
         </div>
       </section>
     </>
