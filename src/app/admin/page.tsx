@@ -186,7 +186,7 @@ export default function AdminController() {
   };
 
   return (
-    <ErrorBoundary>
+    <ErrorBoundary fallback={<div className={styles.adminPage}><div className={styles.adminHeader}><h1>Something went wrong.</h1></div></div>}>
       <div className={styles.adminPage}>
         <div className={styles.adminHeader}>
           <div className={styles.headerLeft}>
