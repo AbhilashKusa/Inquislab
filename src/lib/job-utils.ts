@@ -24,6 +24,11 @@ export function validatePassword(password: string | null) {
   if (password !== current) throw new Error('Invalid controller password.');
 }
 
+export function isValidPassword(password: string | null): boolean {
+  const current = getPassword();
+  return !!current && password === current;
+}
+
 export function buildJobFromForm(formData: FormData): Omit<Job, 'applyEmail' | 'applySubject' | 'applyBody'> & {
   applyEmail: string;
   applySubject: string;

@@ -57,13 +57,17 @@ export default function AdminController() {
     setLoading(true);
     setStatus('');
     try {
-      await authenticate(password);
-      setAuthed(true);
-      setInitialLoading(true);
-      await loadData();
-      setInitialLoading(false);
+      const res = await authenticate(password);
+      if (res.success) {
+        setAuthed(true);
+        setInitialLoading(true);
+        await loadData();
+        setInitialLoading(false);
+      } else {
+        setStatus(`✗ ${res.error || 'Authentication failed'}`);
+      }
     } catch (err) {
-      setStatus(err instanceof Error ? err.message : 'Authentication failed');
+      setStatus('✗ Authentication error occurred');
     }
     setLoading(false);
   };

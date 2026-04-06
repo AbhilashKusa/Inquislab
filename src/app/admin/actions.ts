@@ -3,7 +3,7 @@ import { Octokit } from '@octokit/rest';
 import fs from 'fs';
 import path from 'path';
 import { revalidatePath } from 'next/cache';
-import { Job, buildJobFromForm, validatePassword } from '@/lib/job-utils';
+import { Job, buildJobFromForm, validatePassword, isValidPassword } from '@/lib/job-utils';
 import { Project, buildProjectFromForm } from '@/lib/project-utils';
 
 const REPO_OWNER = 'AbhilashKusa';
@@ -161,6 +161,8 @@ export async function deleteProject(formData: FormData) {
 
 // ─── AUTH ───
 export async function authenticate(password: string) {
-  validatePassword(password);
-  return { success: true };
+  if (isValidPassword(password)) {
+    return { success: true };
+  }
+  return { success: false, error: 'Invalid controller password.' };
 }
