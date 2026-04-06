@@ -21,6 +21,7 @@ function getFilePath(relativePath: string) {
 function readData<T>(relativePath: string): T[] {
   try {
     const filePath = getFilePath(relativePath);
+    if (!fs.existsSync(filePath)) return [];
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (err) {
     console.error(`Missing or invalid data file: ${relativePath}`, err);
@@ -63,7 +64,6 @@ async function saveData<T>(relativePath: string, data: T[], commitMessage: strin
     });
   }
   
-  // High-level revalidation
   revalidatePath('/');
   revalidatePath('/careers');
 }
@@ -71,58 +71,71 @@ async function saveData<T>(relativePath: string, data: T[], commitMessage: strin
 // ─── GENERIC HANDLERS ───
 
 async function publish(type: ItemType, formData: FormData) {
-    validatePassword(formData.get('password')?.toString() || null);
+    const pwd = formData.get('password')?.toString() || null;
+    if (!isValidPassword(pwd)) return { success: false, error: 'Invalid controller password.' };
 
     const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
     const data = readData<Item>(path);
     const newItem = type === 'job' ? buildJobFromForm(formData) : buildProjectFromForm(formData);
 
     if (data.some(item => item.id === newItem.id)) {
-        throw new Error(`${type} with ID "${newItem.id}" already exists.`);
+        return { success: false, error: `${type} with ID "${newItem.id}" already exists.` };
     }
 
     data.push(newItem);
-    await saveData(path, data, `Controller: Published ${type} "${newItem.title}"`);
-    if (type === 'job') {
-        revalidatePath(`/careers/${newItem.id}`);
+    try {
+        await saveData(path, data, `Controller: Published ${type} "${newItem.title}"`);
+        if (type === 'job') revalidatePath(`/careers/${newItem.id}`);
+        return { success: true };
+    } catch (err: any) {
+        return { success: false, error: err.message || 'Failed to save data to GitHub.' };
     }
-    return { success: true };
 }
 
 async function update(type: ItemType, formData: FormData) {
-    validatePassword(formData.get('password')?.toString() || null);
+    const pwd = formData.get('password')?.toString() || null;
+    if (!isValidPassword(pwd)) return { success: false, error: 'Invalid controller password.' };
 
     const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
     const data = readData<Item>(path);
     const itemId = formData.get('id')?.toString();
     const index = data.findIndex(item => item.id === itemId);
 
-    if (index === -1) throw new Error(`${type} "${itemId}" not found.`);
+    if (index === -1) return { success: false, error: `${type} "${itemId}" not found.` };
 
     const updatedItem = type === 'job' ? buildJobFromForm(formData) : buildProjectFromForm(formData);
     updatedItem.id = itemId!;
     data[index] = updatedItem;
-    await saveData(path, data, `Controller: Updated ${type} "${updatedItem.title}"`);
-    if (type === 'job') {
-        revalidatePath(`/careers/${updatedItem.id}`);
+    
+    try {
+        await saveData(path, data, `Controller: Updated ${type} "${updatedItem.title}"`);
+        if (type === 'job') revalidatePath(`/careers/${updatedItem.id}`);
+        return { success: true };
+    } catch (err: any) {
+        return { success: false, error: err.message || 'Failed to save update to GitHub.' };
     }
-    return { success: true };
 }
 
 async function del(type: ItemType, formData: FormData) {
-    validatePassword(formData.get('password')?.toString() || null);
+    const pwd = formData.get('password')?.toString() || null;
+    if (!isValidPassword(pwd)) return { success: false, error: 'Invalid controller password.' };
 
     const path = type === 'job' ? JOBS_PATH : PROJECTS_PATH;
     const data = readData<Item>(path);
     const itemId = formData.get('id')?.toString();
     const index = data.findIndex(item => item.id === itemId);
 
-    if (index === -1) throw new Error(`${type} "${itemId}" not found.`);
+    if (index === -1) return { success: false, error: `${type} "${itemId}" not found.` };
 
     const item = data[index];
     data.splice(index, 1);
-    await saveData(path, data, `Controller: Deleted ${type} "${item.title}"`);
-    return { success: true };
+    
+    try {
+        await saveData(path, data, `Controller: Deleted ${type} "${item.title}"`);
+        return { success: true };
+    } catch (err: any) {
+        return { success: false, error: err.message || 'Failed to delete from GitHub.' };
+    }
 }
 
 // ─── JOBS ───

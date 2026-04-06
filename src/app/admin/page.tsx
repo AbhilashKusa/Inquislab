@@ -103,11 +103,15 @@ export default function AdminController() {
     try {
       const formData = new FormData(e.currentTarget);
       formData.set('password', password);
-      if (mode === 'create_job') await publishJob(formData);
-      else await updateJob(formData);
-      setStatus(`✓ Job ${mode === 'create_job' ? 'published' : 'updated'} successfully`);
-      await loadData();
-      setTimeout(() => { setView('dashboard'); setEditJob(null); setStatus(''); }, 1500);
+      const res = mode === 'create_job' ? await publishJob(formData) : await updateJob(formData);
+      
+      if (res.success) {
+        setStatus(`✓ Job ${mode === 'create_job' ? 'published' : 'updated'} successfully`);
+        await loadData();
+        setTimeout(() => { setView('dashboard'); setEditJob(null); setStatus(''); }, 1500);
+      } else {
+        setStatus(`✗ ${res.error || 'Failed to save job'}`);
+      }
     } catch (err: unknown) {
       setStatus(`✗ ${err instanceof Error ? err.message : 'Error'}`);
     }
@@ -120,11 +124,16 @@ export default function AdminController() {
       const formData = new FormData();
       formData.set('password', password);
       formData.set('id', jobId);
-      await deleteJob(formData);
-      setDeleteConfirm(null);
-      await loadData();
-      setStatus('✓ Job deleted');
-      setTimeout(() => setStatus(''), 2000);
+      const res = await deleteJob(formData);
+      
+      if (res.success) {
+        setDeleteConfirm(null);
+        await loadData();
+        setStatus('✓ Job deleted');
+        setTimeout(() => setStatus(''), 2000);
+      } else {
+        setStatus(`✗ ${res.error || 'Failed to delete job'}`);
+      }
     } catch (err: unknown) {
       setStatus(`✗ ${err instanceof Error ? err.message : 'Error'}`);
     }
@@ -139,11 +148,15 @@ export default function AdminController() {
     try {
       const formData = new FormData(e.currentTarget);
       formData.set('password', password);
-      if (mode === 'create_project') await publishProject(formData);
-      else await updateProject(formData);
-      setStatus(`✓ Project ${mode === 'create_project' ? 'published' : 'updated'} successfully`);
-      await loadData();
-      setTimeout(() => { setView('dashboard'); setEditProject(null); setStatus(''); }, 1500);
+      const res = mode === 'create_project' ? await publishProject(formData) : await updateProject(formData);
+      
+      if (res.success) {
+        setStatus(`✓ Project ${mode === 'create_project' ? 'published' : 'updated'} successfully`);
+        await loadData();
+        setTimeout(() => { setView('dashboard'); setEditProject(null); setStatus(''); }, 1500);
+      } else {
+        setStatus(`✗ ${res.error || 'Failed to save project'}`);
+      }
     } catch (err: unknown) {
       setStatus(`✗ ${err instanceof Error ? err.message : 'Error'}`);
     }
@@ -156,11 +169,16 @@ export default function AdminController() {
       const formData = new FormData();
       formData.set('password', password);
       formData.set('id', projId);
-      await deleteProject(formData);
-      setDeleteConfirm(null);
-      await loadData();
-      setStatus('✓ Project deleted');
-      setTimeout(() => setStatus(''), 2000);
+      const res = await deleteProject(formData);
+      
+      if (res.success) {
+        setDeleteConfirm(null);
+        await loadData();
+        setStatus('✓ Project deleted');
+        setTimeout(() => setStatus(''), 2000);
+      } else {
+        setStatus(`✗ ${res.error || 'Failed to delete project'}`);
+      }
     } catch (err: unknown) {
       setStatus(`✗ ${err instanceof Error ? err.message : 'Error'}`);
     }
@@ -168,51 +186,38 @@ export default function AdminController() {
   };
 
   return (
-    <ErrorBoundary fallback={<h2>Something went wrong. Please refresh.</h2>}>
+    <ErrorBoundary>
       <div className={styles.adminPage}>
+        <div className={styles.adminHeader}>
+          <div className={styles.headerLeft}>
+            <h1>Controller</h1>
+            <div className={styles.tabNav}>
+              <button onClick={() => { setActiveTab('jobs'); setView('dashboard'); }} className={activeTab === 'jobs' ? styles.active : ''}>Jobs</button>
+              <button onClick={() => { setActiveTab('projects'); setView('dashboard'); }} className={activeTab === 'projects' ? styles.active : ''}>Projects</button>
+            </div>
+          </div>
+          <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
+        </div>
+
+        {status && <div className={`${styles.statusBanner} ${status.startsWith('✓') ? styles.success : styles.error}`}>{status}</div>}
+
         {view === 'dashboard' && (
           <>
-            <div className={styles.adminHeader}>
-              <div>
-                <div className={styles.adminTag}>CONTROLLER</div>
-                <h1>{activeTab === 'jobs' ? 'Jobs CRM' : 'Projects CRM'}</h1>
-                <p>{activeTab === 'jobs' ? jobs.length : projects.length} {activeTab === 'jobs' ? 'roles' : 'projects'} published</p>
-              </div>
-              <div className={`${styles.dFlex} ${styles.gap12}`}>
-                <button 
-                  onClick={() => { setView(activeTab === 'jobs' ? 'create_job' : 'create_project'); setStatus(''); }} 
-                  className="btn btn-primary"
-                >
-                  + New {activeTab === 'jobs' ? 'Role' : 'Project'}
-                </button>
-                <button onClick={handleLogout} className="btn btn-outline">Logout</button>
-              </div>
+            <div className={styles.dashboardActions}>
+              {activeTab === 'jobs' ? (
+                <button onClick={() => setView('create_job')} className="btn btn-primary">+ Post New Job</button>
+              ) : (
+                <button onClick={() => setView('create_project')} className="btn btn-primary">+ Add New Project</button>
+              )}
             </div>
-
-            <div className={styles.adminTabs}>
-              <button 
-                className={`${styles.tabBtn} ${activeTab === 'jobs' ? styles.active : ''}`}
-                onClick={() => setActiveTab('jobs')}
-              >Jobs</button>
-              <button 
-                className={`${styles.tabBtn} ${activeTab === 'projects' ? styles.active : ''}`}
-                onClick={() => setActiveTab('projects')}
-              >Projects</button>
-            </div>
-
-            {status && <div className={`${styles.statusMsg} ${status.startsWith('✓') ? styles.success : styles.error} ${styles.mb24}`}>{status}</div>}
 
             {activeTab === 'jobs' ? (
-              <div className={styles.jobsList}>
+              <div className={styles.jobList}>
                 {jobs.map(job => (
                   <div key={job.id} className={styles.jobRow}>
                     <div className={styles.jobRowInfo}>
-                      <div className={styles.jobRowTitle}>{job.title}</div>
-                      <div className={styles.jobRowMeta}>
-                        <span>{job.team}</span>
-                        <span>·</span>
-                        <span>{job.location}</span>
-                      </div>
+                      <h3>{job.title}</h3>
+                      <p>{job.team} · {job.location}</p>
                     </div>
                     <div className={styles.jobRowActions}>
                       <button onClick={() => { setEditJob(job); setView('edit_job'); setStatus(''); }} className={`${styles.actionBtn} ${styles.edit}`}>Edit</button>
@@ -231,16 +236,12 @@ export default function AdminController() {
                 ))}
               </div>
             ) : (
-              <div className={styles.jobsList}>
+              <div className={styles.jobList}>
                 {projects.map(proj => (
                   <div key={proj.id} className={styles.jobRow}>
                     <div className={styles.jobRowInfo}>
-                      <div className={styles.jobRowTitle}>{proj.title}</div>
-                      <div className={styles.jobRowMeta}>
-                        <span>{proj.projectNumber}</span>
-                        <span>·</span>
-                        <span>{proj.status}</span>
-                      </div>
+                      <h3>{proj.title}</h3>
+                      <p>{proj.summary}</p>
                     </div>
                     <div className={styles.jobRowActions}>
                       <button onClick={() => { setEditProject(proj); setView('edit_project'); setStatus(''); }} className={`${styles.actionBtn} ${styles.edit}`}>Edit</button>
