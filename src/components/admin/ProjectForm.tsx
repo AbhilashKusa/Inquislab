@@ -4,7 +4,7 @@ import styles from '@/app/admin/admin.module.css';
 interface ProjectFormProps {
   mode: 'create_project' | 'edit_project';
   handleProjectSubmit: (e: React.FormEvent<HTMLFormElement>, mode: 'create_project' | 'edit_project') => void;
-  setView: (view: string) => void;
+  setView: (view: any) => void;
   setEditProject: (project: Project | null) => void;
   setStatus: (status: string) => void;
   editProject: Project | null;

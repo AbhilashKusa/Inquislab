@@ -4,7 +4,7 @@ import styles from '@/app/admin/admin.module.css';
 interface JobFormProps {
   mode: 'create_job' | 'edit_job';
   handleJobSubmit: (e: React.FormEvent<HTMLFormElement>, mode: 'create_job' | 'edit_job') => void;
-  setView: (view: string) => void;
+  setView: (view: any) => void;
   setEditJob: (job: Job | null) => void;
   setStatus: (status: string) => void;
   editJob: Job | null;
