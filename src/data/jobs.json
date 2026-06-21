@@ -88,6 +88,62 @@
     "applyBody": "Please share:\n\n1. Technical links you're proud of (GitHub, personal website, or a deployed project).\n2. A brief overview of an end-to-end product feature you have shipped.\n3. Why you are interested in InquisLab.\n\nNo cover letters required."
   },
   {
+    "id": "software-engineer-full-stack",
+    "team": "Team 01 · Research & Engineering",
+    "title": "Software Engineer (Full-Stack)",
+    "location": "Remote · India",
+    "type": "Full-time",
+    "tags": [
+      "INR 15-25 LPA + equity"
+    ],
+    "summary": "InquisLab builds AI software for industrial teams operating refineries, chemical plants, factories, and other critical infrastructure. As a Software Engineer (Full-Stack), you will own end-to-end product features across our Next.js frontend, Python backend, data workflows, and AI integrations.",
+    "sections": [
+      {
+        "title": "What you will do",
+        "bullets": [
+          "Build and ship product features from idea to production.",
+          "Design and implement APIs, data pipelines, and integrations.",
+          "Work with LLMs and ML models in production systems.",
+          "Own testing, monitoring, debugging, and production quality.",
+          "Contribute to architecture decisions directly with the founders."
+        ]
+      },
+      {
+        "title": "Must-have",
+        "bullets": [
+          "2+ years shipping production software.",
+          "Strong JavaScript, TypeScript, and React fundamentals.",
+          "Python backend experience with FastAPI, Django, Flask, or similar.",
+          "SQL and database design experience.",
+          "Git and CI/CD basics.",
+          "Self-starter who can move fast in an early-stage startup."
+        ]
+      },
+      {
+        "title": "Nice-to-have",
+        "bullets": [
+          "Next.js, Vercel, and Tailwind experience.",
+          "LLM or AI integration experience with OpenAI, LangChain, or similar.",
+          "Docker, AWS, GCP, or production infrastructure experience.",
+          "Industrial, manufacturing, energy, or B2B software exposure.",
+          "Open-source contributions or strong public project work."
+        ]
+      },
+      {
+        "title": "What you get",
+        "bullets": [
+          "INR 15-25 LPA plus early equity.",
+          "Remote-first, async culture.",
+          "Direct founder access and high ownership.",
+          "A chance to build software for industries where reliability matters."
+        ]
+      }
+    ],
+    "applyEmail": "careers@inquislab.com",
+    "applySubject": "Software Engineer (Full-Stack) — Application",
+    "applyBody": "Please share:\n\n1. Your resume.\n2. One project you are proud of, ideally with a GitHub link.\n3. A short note on what you shipped and what you owned.\n\nNo cover letters required."
+  },
+  {
     "id": "marketing-ground",
     "team": "Team 02 · Growth & Storytelling",
     "title": "Growth Lead",
